@@ -1,6 +1,6 @@
 # Baseline Marketing Site
 
-Static single-page site in `marketing/` (no build step).
+Static single-page site (no build step).
 
 ## Preview locally
 
