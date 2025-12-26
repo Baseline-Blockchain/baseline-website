@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0c0e14">
+    <title>Baseline — Open Payment Network</title>
+    <meta name="description" content="Baseline is an open payment network: simple transfers, public verification, and optional “send later” scheduling.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Baseline home">
+          <img src="assets/logo.png" alt="Baseline logo" width="44" height="44">
+        </a>
+
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Toggle navigation">
+        <label class="nav-toggle-btn" for="nav-toggle" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#features">Why</a>
+          <a href="#payments">Payments</a>
+          <a href="#earn">Earn</a>
+          <a href="#tools">Tools</a>
+          <a class="cta" href="#quickstart">Quick Start</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Payments, made simple</p>
+            <h1>Move value. Verify it yourself.</h1>
+            <p class="lead">
+              Baseline is an open payment network for everyday transfers: clear rules, public verification,
+              and an optional “send later” feature when timing matters.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#quickstart">Get started</a>
+              <a class="button ghost" href="#features">See features</a>
+            </div>
+            <p class="fineprint">
+              No signups. No gatekeepers. Anyone can verify.
+            </p>
+          </div>
+
+          <div class="hero-card" role="presentation">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="stat-icon" aria-hidden="true"><i class="bi bi-globe2"></i></div>
+                <div class="stat-label">Open participation</div>
+                <div class="stat-value">Anyone can join</div>
+                <div class="stat-note">No signups, no approvals</div>
+              </div>
+              <div class="stat">
+                <div class="stat-icon" aria-hidden="true"><i class="bi bi-shield-check"></i></div>
+                <div class="stat-label">Verifiable</div>
+                <div class="stat-value">Public activity</div>
+                <div class="stat-note">Check the chain, not claims</div>
+              </div>
+              <div class="stat">
+                <div class="stat-icon" aria-hidden="true"><i class="bi bi-check2-circle"></i></div>
+                <div class="stat-label">Predictable</div>
+                <div class="stat-value">Clear rules</div>
+                <div class="stat-note">Designed for verification</div>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span class="badge">BLINE</span>
+              <span class="muted">Simple stack, fast iteration</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container">
+          <h2>Why Baseline</h2>
+          <p class="muted section-lead">
+            Built to feel straightforward for users, while staying verifiable for everyone.
+          </p>
+
+          <div class="cards">
+            <div class="card">
+              <h3><i class="bi bi-globe2 icon" aria-hidden="true"></i>Open participation</h3>
+              <p>
+                Anyone can participate. No accounts, no “invites”, no approval process—just an open network.
+              </p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-shield-check icon" aria-hidden="true"></i>Transparent by default</h3>
+              <p>
+                Activity is publicly verifiable. The goal is clarity: predictable behavior, fewer surprises.
+              </p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-send-check icon" aria-hidden="true"></i>Practical payments</h3>
+              <p>
+                Standard sends for everyday transfers. Optional Scheduled Sends when “send later” matters.
+              </p>
+            </div>
+          </div>
+
+          <details class="advanced" id="advanced">
+            <summary>For miners &amp; builders (advanced)</summary>
+            <div class="advanced-body">
+              <div class="cards advanced-cards">
+                <div class="card">
+                  <h3>Mining rigs</h3>
+                  <p>
+                    Baseline can be secured by miners, and rigs can connect to a node’s mining endpoint. If you’re a miner,
+                    this is where you plug in your setup.
+                  </p>
+                </div>
+                <div class="card">
+                  <h3>Operators</h3>
+                  <p>
+                    Nodes expose an API for integrations and tooling, with authentication and sensible limits to keep the service stable.
+                  </p>
+                </div>
+                <div class="card">
+                  <h3>Technical terms</h3>
+                  <p>
+                    The network uses Proof-of-Work. Mining integrations typically use Stratum. Tooling uses JSON-RPC.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="payments" class="section alt">
+        <div class="container">
+          <div class="split">
+            <div>
+              <h2>Payments</h2>
+              <p class="muted section-lead">
+                Keep it simple for everyday usage, with optional time-based intent when you need it.
+              </p>
+              <ul class="list">
+                <li><strong>Standard sends</strong> for normal payments.</li>
+                <li><strong>Scheduled Sends (optional)</strong>: pick a future UTC date/time.</li>
+                <li><strong>Cancelable or non-cancelable</strong> scheduling modes depending on the use-case.</li>
+                <li><strong>Verify</strong> status in wallet and explorer.</li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <span class="panel-title">Scheduled Sends (optional)</span>
+                <span class="badge">Verifiable</span>
+              </div>
+              <div class="panel-body">
+                <div class="kv">
+                  <div class="k">Cancelable</div>
+                  <div class="v">Sender can cancel before scheduled time</div>
+                </div>
+                <div class="kv">
+                  <div class="k">Non-cancelable</div>
+                  <div class="v">Recipient can verify intent can’t be revoked</div>
+                </div>
+                <div class="kv">
+                  <div class="k">Transparency</div>
+                  <div class="v">All schedules are verifiable by participants</div>
+                </div>
+              </div>
+              <div class="panel-foot muted">
+                Note: enforcement comes from consensus rules, not from a trusted server.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="earn" class="section">
+        <div class="container">
+          <h2>Earn by securing the network</h2>
+          <p class="muted section-lead">
+            If you run mining hardware, you can connect it to a Baseline node and contribute security.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <h3><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Run a node</h3>
+              <p>
+                Keep a node online so it can stay synced and serve mining work to connected hardware.
+              </p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-plug icon" aria-hidden="true"></i>Connect hardware</h3>
+              <p>
+                Point your rig at the node’s mining endpoint. Use your payout address so rewards go where you want them.
+              </p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-receipt icon" aria-hidden="true"></i>Track payouts</h3>
+              <p>
+                Rewards mature over time. The operator flow is designed to make payouts predictable and auditable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" class="section alt">
+        <div class="container">
+          <h2>Tools</h2>
+          <p class="muted section-lead">
+            Baseline includes the basics to participate and verify: a wallet, an explorer, and an API for integrations.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <h3><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Wallet</h3>
+              <p>Send and receive, with optional Scheduled Sends.</p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-search icon" aria-hidden="true"></i>Explorer</h3>
+              <p>Browse blocks and transactions, plus schedules when relevant.</p>
+            </div>
+            <div class="card">
+              <h3><i class="bi bi-braces icon" aria-hidden="true"></i>API</h3>
+              <p>JSON-RPC for tools, integrations, and operators (advanced).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="quickstart" class="section">
+        <div class="container">
+          <h2>Quick Start</h2>
+          <p class="muted section-lead">
+            Full instructions live in the repo docs—wallet, mining, and operations.
+          </p>
+          <div class="cta-row">
+            <a target="_blank" class="button primary" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#quick-start">Open README</a>
+           
+          </div>
+          <p class="fineprint">
+            Want to help? Share feedback and report bugs in the project repo.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="" width="36" height="36">
+          <div>
+            <div class="footer-title">Baseline</div>
+            <div class="muted">Open payment network</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/Baseline-Blockchain/baseline-node">Repo</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
