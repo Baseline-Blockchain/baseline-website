@@ -145,6 +145,10 @@ a {
   background: rgba(71, 194, 255, 0.12);
 }
 
+.nav a.nav-external {
+  opacity: 0.95;
+}
+
 .nav a.cta {
   background: rgba(71, 194, 255, 0.2);
   border: 1px solid rgba(71, 194, 255, 0.28);
@@ -596,6 +600,17 @@ h1 {
   margin: 0.5rem 0 0;
   color: rgba(248, 251, 255, 0.86);
   line-height: 1.6;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card-link:focus-visible {
+  outline: 2px solid rgba(71, 194, 255, 0.55);
+  outline-offset: 4px;
 }
 
 .split {

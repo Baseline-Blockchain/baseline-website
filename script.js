@@ -26,6 +26,23 @@
     });
   }
 
+  function setupExplorerLinks() {
+    var url = "";
+    try {
+      url = document.body && document.body.dataset ? String(document.body.dataset.explorerUrl || "") : "";
+    } catch (_) {
+      url = "";
+    }
+    if (!url) return;
+
+    var links = document.querySelectorAll("[data-explorer-link]");
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute("href", url);
+    }
+  }
+
+  setupExplorerLinks();
+
   var reveal = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
 
   function showAll() {
