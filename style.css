@@ -1291,6 +1291,12 @@ h1 {
   }
 }
 
+@media (max-width: 520px) {
+  .hero-visual  {
+   display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
