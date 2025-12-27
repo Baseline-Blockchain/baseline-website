@@ -1176,6 +1176,46 @@ h1 {
   color: inherit;
 }
 
+.codewrap {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 14, 20, 0.55);
+  color: rgba(248, 251, 255, 0.9);
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, opacity 140ms ease;
+}
+
+.copy-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(71, 194, 255, 0.22);
+  background: rgba(12, 14, 20, 0.7);
+}
+
+.copy-btn:active {
+  transform: translateY(1px);
+}
+
+.copy-btn.is-copied {
+  border-color: rgba(71, 194, 255, 0.3);
+  background: rgba(71, 194, 255, 0.14);
+}
+
+.copy-btn i {
+  font-size: 1.05rem;
+}
+
 .os-tabs {
   display: grid;
   gap: 0.7rem;

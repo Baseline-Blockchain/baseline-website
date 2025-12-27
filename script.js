@@ -27,30 +27,103 @@
   }
 
   var reveal = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
-  if (!reveal.length) return;
 
   function showAll() {
     for (var i = 0; i < reveal.length; i++) reveal[i].classList.add("is-visible");
   }
 
-  if (!("IntersectionObserver" in window)) {
-    showAll();
-    return;
+  if (reveal.length) {
+    if (!("IntersectionObserver" in window)) {
+      showAll();
+    } else {
+      var io = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              entries[i].target.classList.add("is-visible");
+              io.unobserve(entries[i].target);
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+      );
+
+      for (var j = 0; j < reveal.length; j++) io.observe(reveal[j]);
+    }
   }
 
-  var io = new IntersectionObserver(
-    function (entries) {
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) {
-          entries[i].target.classList.add("is-visible");
-          io.unobserve(entries[i].target);
-        }
-      }
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
-  );
+  function setupCopyButtons() {
+    var buttons = document.querySelectorAll(".copy-btn");
+    if (!buttons.length) return;
 
-  for (var j = 0; j < reveal.length; j++) io.observe(reveal[j]);
+    function fallbackCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.top = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, ta.value.length);
+      try {
+        document.execCommand("copy");
+      } catch (_) {
+        // Ignore; some environments disallow programmatic copy.
+      }
+      document.body.removeChild(ta);
+    }
+
+    function setCopied(btn, copied) {
+      if (!btn) return;
+      if (copied) {
+        btn.classList.add("is-copied");
+        btn.title = "Copied";
+        btn.setAttribute("aria-label", "Copied");
+        var icon = btn.querySelector("i");
+        if (icon) icon.className = "bi bi-check2";
+      } else {
+        btn.classList.remove("is-copied");
+        btn.title = "Copy";
+        btn.setAttribute("aria-label", "Copy commands");
+        var icon2 = btn.querySelector("i");
+        if (icon2) icon2.className = "bi bi-clipboard";
+      }
+    }
+
+    for (var i = 0; i < buttons.length; i++) {
+      (function (btn) {
+        btn.addEventListener("click", function () {
+          var wrap = btn.closest ? btn.closest(".codewrap") : null;
+          var code = wrap ? wrap.querySelector("code") : null;
+          var text = code ? String(code.textContent || "") : "";
+          if (!text) return;
+
+          var done = function () {
+            setCopied(btn, true);
+            window.setTimeout(function () {
+              setCopied(btn, false);
+            }, 1200);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(text)
+              .then(done)
+              .catch(function () {
+                fallbackCopy(text);
+                done();
+              });
+          } else {
+            fallbackCopy(text);
+            done();
+          }
+        });
+      })(buttons[i]);
+    }
+  }
+
+  setupCopyButtons();
 
   if (reduceMotion) return;
 

@@ -361,20 +361,30 @@
                   </div>
                   <div class="os-panels">
                     <div class="os-panel os-win">
-                      <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
+                      <div class="codewrap">
+                        <button class="copy-btn" type="button" title="Copy" aria-label="Copy commands">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                        <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
 cd baseline-node
 py -3 -m venv .venv
 .venv\Scripts\activate
 pip install -e .
 baseline-node --config config.json</code></pre>
+                      </div>
                     </div>
                     <div class="os-panel os-unix">
-                      <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
+                      <div class="codewrap">
+                        <button class="copy-btn" type="button" title="Copy" aria-label="Copy commands">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                        <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
 cd baseline-node
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 baseline-node --config config.json</code></pre>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -390,7 +400,12 @@ baseline-node --config config.json</code></pre>
                 <span class="badge">GUI</span>
               </div>
               <div class="panel-body">
-                <pre class="codeblock"><code>baseline-wallet-gui</code></pre>
+                <div class="codewrap">
+                  <button class="copy-btn" type="button" title="Copy" aria-label="Copy command">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
+                  <pre class="codeblock"><code>baseline-wallet-gui</code></pre>
+                </div>
                 <p class="muted fineprint">The wallet talks to your local node via JSON-RPC (start the node first).</p>
               </div>
             </div>
@@ -401,7 +416,12 @@ baseline-node --config config.json</code></pre>
                 <span class="badge">Stratum</span>
               </div>
               <div class="panel-body">
-                <pre class="codeblock"><code>bfgminer -o stratum+tcp://127.0.0.1:3333 -u YOURADDRESS.worker1 -p x</code></pre>
+                <div class="codewrap">
+                  <button class="copy-btn" type="button" title="Copy" aria-label="Copy command">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
+                  <pre class="codeblock"><code>bfgminer -o stratum+tcp://127.0.0.1:3333 -u YOURADDRESS.worker1 -p x</code></pre>
+                </div>
                 <p class="muted fineprint">
                   Requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).
                   See <a class="inline-link" target="_blank" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#mining">README Mining</a>.
