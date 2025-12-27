@@ -343,16 +343,77 @@
       <section id="quickstart" class="section">
         <div class="container">
           <h2>Quick Start</h2>
-          <p class="muted section-lead">
-            Full instructions live in the repo docs: wallet, mining, and operations.
-          </p>
+          <p class="muted section-lead">Start a node, open the wallet, and (optionally) connect a miner.</p>
+
+          <div class="quickstart-grid">
+            <div class="panel reveal">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Run a node</span>
+                <span class="badge">Local</span>
+              </div>
+              <div class="panel-body">
+                <div class="os-tabs" aria-label="Quick start commands by operating system">
+                  <input class="os-tab" type="radio" name="os" id="os-win" checked>
+                  <input class="os-tab" type="radio" name="os" id="os-unix">
+                  <div class="os-tablist" aria-label="Operating system">
+                    <label for="os-win">Windows</label>
+                    <label for="os-unix">macOS / Linux</label>
+                  </div>
+                  <div class="os-panels">
+                    <div class="os-panel os-win">
+                      <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
+cd baseline-node
+py -3 -m venv .venv
+.venv\Scripts\activate
+pip install -e .
+baseline-node --config config.json</code></pre>
+                    </div>
+                    <div class="os-panel os-unix">
+                      <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-node.git
+cd baseline-node
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+baseline-node --config config.json</code></pre>
+                    </div>
+                  </div>
+                </div>
+                <p class="muted fineprint">
+                  Update RPC credentials in <code>config.json</code> before exposing anything to the internet.
+                </p>
+              </div>
+            </div>
+
+            <div class="panel reveal">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Open the wallet</span>
+                <span class="badge">GUI</span>
+              </div>
+              <div class="panel-body">
+                <pre class="codeblock"><code>baseline-wallet-gui</code></pre>
+                <p class="muted fineprint">The wallet talks to your local node via JSON-RPC (start the node first).</p>
+              </div>
+            </div>
+
+            <div class="panel reveal">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-cpu icon" aria-hidden="true"></i>Mine (optional)</span>
+                <span class="badge">Stratum</span>
+              </div>
+              <div class="panel-body">
+                <pre class="codeblock"><code>bfgminer -o stratum+tcp://127.0.0.1:3333 -u YOURADDRESS.worker1 -p x</code></pre>
+                <p class="muted fineprint">
+                  Requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).
+                  See <a class="inline-link" target="_blank" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#mining">README Mining</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div class="cta-row">
             <a target="_blank" class="button primary" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#quick-start">Open README</a>
-           
+            <a target="_blank" class="button ghost" href="https://github.com/Baseline-Blockchain/baseline-node">Project repo</a>
           </div>
-          <p class="fineprint">
-            Want to help? Share feedback and report bugs in the project repo.
-          </p>
         </div>
       </section>
     </main>

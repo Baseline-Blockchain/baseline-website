@@ -36,6 +36,17 @@ a {
   color: inherit;
 }
 
+.inline-link {
+  color: rgba(71, 194, 255, 0.95);
+  text-decoration: underline;
+  text-decoration-color: rgba(71, 194, 255, 0.55);
+  text-underline-offset: 3px;
+}
+
+.inline-link:hover {
+  text-decoration-color: rgba(71, 194, 255, 0.95);
+}
+
 .mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   letter-spacing: 0.01em;
@@ -1139,6 +1150,95 @@ h1 {
   flex-wrap: wrap;
 }
 
+.quickstart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.1rem;
+}
+
+.codeblock {
+  margin: 0;
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(12, 14, 20, 0.6);
+  color: rgba(248, 251, 255, 0.92);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.codeblock code {
+  color: inherit;
+}
+
+.os-tabs {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.os-tab {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.os-tablist {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.os-tablist label {
+  cursor: pointer;
+  user-select: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(248, 251, 255, 0.82);
+  font-weight: 850;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+#os-win:checked ~ .os-tablist label[for="os-win"],
+#os-unix:checked ~ .os-tablist label[for="os-unix"] {
+  background: rgba(71, 194, 255, 0.16);
+  border: 1px solid rgba(71, 194, 255, 0.22);
+  color: rgba(248, 251, 255, 0.95);
+}
+
+.os-panels .os-panel {
+  display: none;
+}
+
+#os-win:checked ~ .os-panels .os-win {
+  display: block;
+}
+
+#os-unix:checked ~ .os-panels .os-unix {
+  display: block;
+}
+
+.panel .fineprint code {
+  padding: 0.12rem 0.35rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 14, 20, 0.45);
+  color: rgba(248, 251, 255, 0.92);
+}
+
 .advanced {
   margin-top: 1.25rem;
   border-radius: 16px;
@@ -1229,6 +1329,10 @@ h1 {
   }
 
   .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .quickstart-grid {
     grid-template-columns: 1fr;
   }
 
