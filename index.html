@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0c0e14">
-    <title>Baseline — Open Payment Network</title>
-    <meta name="description" content="Baseline is an open payment network: simple transfers, public verification, and optional “send later” scheduling.">
+    <title>Baseline - Open Payment Network</title>
+    <meta name="description" content="Baseline is an open payment network: simple transfers, public verification, and optional send-later scheduling.">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
@@ -37,10 +37,10 @@
         <div class="container hero-grid">
           <div>
             <p class="eyebrow">Payments, made simple</p>
-            <h1>Move value. Verify it yourself.</h1>
+            <h1>Move value. Verify it.</h1>
             <p class="lead">
               Baseline is an open payment network for everyday transfers: clear rules, public verification,
-              and an optional “send later” feature when timing matters.
+              and an optional send-later feature when timing matters.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#quickstart">Get started</a>
@@ -51,30 +51,86 @@
             </p>
           </div>
 
-          <div class="hero-card" role="presentation">
-            <div class="stat-grid">
-              <div class="stat">
-                <div class="stat-icon" aria-hidden="true"><i class="bi bi-globe2"></i></div>
-                <div class="stat-label">Open participation</div>
-                <div class="stat-value">Anyone can join</div>
-                <div class="stat-note">No signups, no approvals</div>
+          <div class="hero-visual reveal" aria-label="Animated illustration of how a transaction moves through the network">
+            <div class="hero-net" role="img" aria-label="Wallet broadcasts a transaction to peers; miners include it in a block; anyone can verify">
+              <svg class="hero-net-lines" viewBox="0 0 520 260" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="netLine" x1="0" x2="1">
+                    <stop offset="0" stop-color="#47c2ff" stop-opacity="0.55"/>
+                    <stop offset="1" stop-color="#8a6cff" stop-opacity="0.5"/>
+                  </linearGradient>
+                </defs>
+                <path d="M80 130 C 125 70, 160 70, 200 82" fill="none" stroke="url(#netLine)" stroke-width="2.5" opacity="0.7"/>
+                <path d="M80 130 C 125 190, 160 190, 200 178" fill="none" stroke="url(#netLine)" stroke-width="2.5" opacity="0.7"/>
+                <path d="M200 82 C 265 60, 295 72, 335 110" fill="none" stroke="url(#netLine)" stroke-width="2.5" opacity="0.7"/>
+                <path d="M200 178 C 265 200, 295 188, 335 150" fill="none" stroke="url(#netLine)" stroke-width="2.5" opacity="0.7"/>
+                <path d="M335 130 C 382 130, 418 130, 458 130" fill="none" stroke="url(#netLine)" stroke-width="2.5" opacity="0.55"/>
+              </svg>
+
+              <div class="net-node net-wallet">
+                <div class="net-icon" aria-hidden="true"><i class="bi bi-wallet2"></i></div>
+                <div class="net-title">Wallet</div>
               </div>
-              <div class="stat">
-                <div class="stat-icon" aria-hidden="true"><i class="bi bi-shield-check"></i></div>
-                <div class="stat-label">Verifiable</div>
-                <div class="stat-value">Public activity</div>
-                <div class="stat-note">Check the chain, not claims</div>
+              <div class="net-node net-peer net-peer-1">
+                <div class="net-icon" aria-hidden="true"><i class="bi bi-hdd-network"></i></div>
+                <div class="net-title">Peer</div>
               </div>
-              <div class="stat">
-                <div class="stat-icon" aria-hidden="true"><i class="bi bi-check2-circle"></i></div>
-                <div class="stat-label">Predictable</div>
-                <div class="stat-value">Clear rules</div>
-                <div class="stat-note">Designed for verification</div>
+              <div class="net-node net-peer net-peer-2">
+                <div class="net-icon" aria-hidden="true"><i class="bi bi-hdd-network"></i></div>
+                <div class="net-title">Peer</div>
               </div>
+              <div class="net-node net-miners">
+                <div class="net-icon" aria-hidden="true"><i class="bi bi-cpu"></i></div>
+                <div class="net-title">Miners</div>
+              </div>
+              <div class="net-node net-block">
+                <div class="net-icon" aria-hidden="true"><i class="bi bi-bricks"></i></div>
+                <div class="net-title">Block</div>
+              </div>
+
+              <div class="net-packet" aria-hidden="true">
+                <span class="net-packet-pill">TX</span>
+                <span class="net-packet-lock"><i class="bi bi-lock-fill"></i></span>
+                <span class="net-packet-check"><i class="bi bi-check2-circle"></i></span>
+              </div>
+
+              <div class="net-pulse net-pulse-wallet" aria-hidden="true"></div>
+              <div class="net-pulse net-pulse-peer" aria-hidden="true"></div>
+              <div class="net-pulse net-pulse-miners" aria-hidden="true"></div>
+              <div class="net-pulse net-pulse-block" aria-hidden="true"></div>
             </div>
-            <div class="hero-card-footer">
+
+            <p class="hero-diagram-caption muted">
+              The <strong>TX</strong> propagates through peers, then flips when it's confirmed in a block.
+            </p>
+
+            <div class="hero-visual-footer">
               <span class="badge">BLINE</span>
-              <span class="muted">Simple stack, fast iteration</span>
+              <span class="muted">Fast blocks &middot; Public verification &middot; Simple stack</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container hero-highlights reveal">
+          <div class="highlight">
+            <div class="highlight-icon" aria-hidden="true"><i class="bi bi-globe2"></i></div>
+            <div>
+              <div class="highlight-title">Open participation</div>
+              <div class="muted">Join and verify without approvals</div>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon" aria-hidden="true"><i class="bi bi-shield-check"></i></div>
+            <div>
+              <div class="highlight-title">Verifiable by default</div>
+              <div class="muted">Check the ledger, not claims</div>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon" aria-hidden="true"><i class="bi bi-send-check"></i></div>
+            <div>
+              <div class="highlight-title">Practical payments</div>
+              <div class="muted">Standard sends + optional scheduling</div>
             </div>
           </div>
         </div>
@@ -88,23 +144,17 @@
           </p>
 
           <div class="cards">
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-globe2 icon" aria-hidden="true"></i>Open participation</h3>
-              <p>
-                Anyone can participate. No accounts, no “invites”, no approval process—just an open network.
-              </p>
+              <p>Run a node, connect a wallet, verify activity. No signups, no gatekeepers.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-shield-check icon" aria-hidden="true"></i>Transparent by default</h3>
-              <p>
-                Activity is publicly verifiable. The goal is clarity: predictable behavior, fewer surprises.
-              </p>
+              <p>Rules are clear and checkable. The network is designed for verification.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-send-check icon" aria-hidden="true"></i>Practical payments</h3>
-              <p>
-                Standard sends for everyday transfers. Optional Scheduled Sends when “send later” matters.
-              </p>
+              <p>Standard sends for everyday transfers, plus optional send-later scheduling.</p>
             </div>
           </div>
 
@@ -114,22 +164,15 @@
               <div class="cards advanced-cards">
                 <div class="card">
                   <h3>Mining rigs</h3>
-                  <p>
-                    Baseline can be secured by miners, and rigs can connect to a node’s mining endpoint. If you’re a miner,
-                    this is where you plug in your setup.
-                  </p>
+                  <p>Connect ASICs via Stratum v1 and secure the network.</p>
                 </div>
                 <div class="card">
                   <h3>Operators</h3>
-                  <p>
-                    Nodes expose an API for integrations and tooling, with authentication and sensible limits to keep the service stable.
-                  </p>
+                  <p>Core-ish JSON-RPC plus an address index for explorers and integrations.</p>
                 </div>
                 <div class="card">
                   <h3>Technical terms</h3>
-                  <p>
-                    The network uses Proof-of-Work. Mining integrations typically use Stratum. Tooling uses JSON-RPC.
-                  </p>
+                  <p>Proof-of-Work &middot; Stratum &middot; JSON-RPC.</p>
                 </div>
               </div>
             </div>
@@ -143,37 +186,68 @@
             <div>
               <h2>Payments</h2>
               <p class="muted section-lead">
-                Keep it simple for everyday usage, with optional time-based intent when you need it.
+                Everyday transfers, plus optional time-based intent when you need it.
               </p>
               <ul class="list">
                 <li><strong>Standard sends</strong> for normal payments.</li>
-                <li><strong>Scheduled Sends (optional)</strong>: pick a future UTC date/time.</li>
+                <li><strong>Send later (optional)</strong>: choose a future UTC date/time.</li>
                 <li><strong>Cancelable or non-cancelable</strong> scheduling modes depending on the use-case.</li>
                 <li><strong>Verify</strong> status in wallet and explorer.</li>
               </ul>
             </div>
 
-            <div class="panel">
-              <div class="panel-head">
-                <span class="panel-title">Scheduled Sends (optional)</span>
+            <div class="flow-card reveal" aria-label="Animated payment flow">
+              <div class="flow-head">
+                <span class="panel-title">Send later, without trust</span>
                 <span class="badge">Verifiable</span>
               </div>
-              <div class="panel-body">
-                <div class="kv">
-                  <div class="k">Cancelable</div>
-                  <div class="v">Sender can cancel before scheduled time</div>
+              <div class="flow-body">
+                <div class="schedule-flow" aria-hidden="true">
+                  <div class="schedule-step">
+                    <div class="flow-icon"><i class="bi bi-pen"></i></div>
+                    <div class="flow-label">Sign</div>
+                  </div>
+                  <div class="schedule-step">
+                    <div class="flow-icon"><i class="bi bi-lock"></i></div>
+                    <div class="flow-label">Locked</div>
+                  </div>
+                  <div class="schedule-step">
+                    <div class="flow-icon"><i class="bi bi-clock"></i></div>
+                    <div class="flow-label">Wait</div>
+                  </div>
+                  <div class="schedule-step">
+                    <div class="flow-icon"><i class="bi bi-unlock"></i></div>
+                    <div class="flow-label">Release</div>
+                  </div>
+                  <div class="schedule-step">
+                    <div class="flow-icon"><i class="bi bi-bricks"></i></div>
+                    <div class="flow-label">Mined</div>
+                  </div>
+
+                  <div class="schedule-track">
+                    <span class="schedule-marker">
+                      <span class="marker-pill"></span>
+                    </span>
+                  </div>
                 </div>
-                <div class="kv">
-                  <div class="k">Non-cancelable</div>
-                  <div class="v">Recipient can verify intent can’t be revoked</div>
-                </div>
-                <div class="kv">
-                  <div class="k">Transparency</div>
-                  <div class="v">All schedules are verifiable by participants</div>
+
+                <div class="flow-details">
+                  <div class="kv">
+                    <div class="k">Cancelable</div>
+                    <div class="v">Sender can cancel before scheduled time</div>
+                  </div>
+                  <div class="kv">
+                    <div class="k">Non-cancelable</div>
+                    <div class="v">Recipient can verify intent can't be revoked</div>
+                  </div>
+                  <div class="kv">
+                    <div class="k">On-chain</div>
+                    <div class="v">Lock time is enforced by consensus rules</div>
+                  </div>
                 </div>
               </div>
               <div class="panel-foot muted">
-                Note: enforcement comes from consensus rules, not from a trusted server.
+                No trusted server required.
               </div>
             </div>
           </div>
@@ -187,23 +261,57 @@
             If you run mining hardware, you can connect it to a Baseline node and contribute security.
           </p>
           <div class="cards">
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Run a node</h3>
-              <p>
-                Keep a node online so it can stay synced and serve mining work to connected hardware.
-              </p>
+              <p>Stay synced and provide work to miners via Stratum.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-plug icon" aria-hidden="true"></i>Connect hardware</h3>
-              <p>
-                Point your rig at the node’s mining endpoint. Use your payout address so rewards go where you want them.
-              </p>
+              <p>Point ASICs to your node and set a payout address.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
               <h3><i class="bi bi-receipt icon" aria-hidden="true"></i>Track payouts</h3>
-              <p>
-                Rewards mature over time. The operator flow is designed to make payouts predictable and auditable.
-              </p>
+              <p>Payouts are tracked and auditable as they mature.</p>
+            </div>
+          </div>
+
+          <div class="mini-visual mining-visual reveal" aria-label="Animated illustration of miners producing blocks">
+            <div class="miner" aria-hidden="true">
+              <div class="miner-top">
+                <span class="miner-title"><i class="bi bi-cpu"></i> ASIC Miner</span>
+                <span class="miner-pill">SHA256d</span>
+              </div>
+              <div class="miner-body">
+                <div class="miner-fans">
+                  <span class="fan"><span class="fan-rotor"><i class="bi bi-fan"></i></span></span>
+                  <span class="fan"><span class="fan-rotor"><i class="bi bi-fan"></i></span></span>
+                  <span class="fan"><span class="fan-rotor"><i class="bi bi-fan"></i></span></span>
+                </div>
+                <div class="miner-chips">
+                  <span class="chip"></span>
+                  <span class="chip"></span>
+                  <span class="chip"></span>
+                </div>
+              </div>
+            </div>
+            <div class="mining-console" aria-hidden="true" data-mining-sim>
+              <div class="console-top">
+                <span class="console-title">Header search</span>
+                <span class="console-pill">target 20s</span>
+              </div>
+              <div class="console-body">
+                <div class="console-row"><span class="k">bits</span><span class="v mono" data-mining="bits">0x1d0225c1</span></div>
+                <div class="console-row"><span class="k">nonce</span><span class="v mono" data-mining="nonce">00000000</span></div>
+                <div class="console-row"><span class="k">hash</span><span class="v mono" data-mining="hash">...</span></div>
+                <div class="console-row"><span class="k">target</span><span class="v mono" data-mining="target">0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</span></div>
+              </div>
+              <div class="console-found" aria-hidden="true">FOUND</div>
+            </div>
+            <div class="block-stack" aria-hidden="true" data-mining-stack>
+              <span class="mini-block"><i class="bi bi-bricks"></i><span data-mining="block">Block</span></span>
+              <span class="mini-block"><i class="bi bi-bricks"></i><span data-mining="block">Block</span></span>
+              <span class="mini-block"><i class="bi bi-bricks"></i><span data-mining="block">Block</span></span>
+              <span class="mini-block"><i class="bi bi-bricks"></i><span data-mining="block">Block</span></span>
             </div>
           </div>
         </div>
@@ -236,7 +344,7 @@
         <div class="container">
           <h2>Quick Start</h2>
           <p class="muted section-lead">
-            Full instructions live in the repo docs—wallet, mining, and operations.
+            Full instructions live in the repo docs: wallet, mining, and operations.
           </p>
           <div class="cta-row">
             <a target="_blank" class="button primary" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#quick-start">Open README</a>
