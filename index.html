@@ -41,11 +41,11 @@
             <h1>Move value. Verify it.</h1>
             <p class="lead">
               Baseline is an open payment network for everyday transfers: clear rules, public verification,
-              and an optional send-later feature when timing matters.
+              and an optional send-later feature when timing matters. Use the light wallet or run your own node.
             </p>
             <div class="hero-actions">
-              <a class="button primary" href="#quickstart">Get started</a>
-              <a class="button ghost" href="#features">See features</a>
+              <a class="button primary" href="#quickstart-light">Use the light wallet</a>
+              <a class="button ghost" href="#node-start">Run a node</a>
             </div>
             <p class="fineprint">
               No signups. No gatekeepers. Anyone can verify.
@@ -298,13 +298,13 @@
         <div class="container">
           <h2>Tools</h2>
           <p class="muted section-lead">
-            Baseline includes the basics to participate and verify: a wallet, an explorer, and an API for integrations.
+            Pick how you participate: a light wallet for users, an explorer to verify, and a node/API stack for operators.
           </p>
           <div class="cards">
-            <div class="card">
-              <h3><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Wallet</h3>
-              <p>Send and receive, with optional Scheduled Sends.</p>
-            </div>
+            <a class="card card-link" href="https://github.com/Baseline-Blockchain/baseline-light/releases/latest" target="_blank" rel="noreferrer" aria-label="Download the Baseline light wallet">
+              <h3><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Light wallet</h3>
+              <p>Desktop app. Keys stay on your device; talks to any Baseline node via public RPC.</p>
+            </a>
             <a class="card card-link" data-explorer-link target="_blank" rel="noreferrer" href="https://explorer.baseline.cash" aria-label="Open the Baseline explorer">
               <h3><i class="bi bi-search icon" aria-hidden="true"></i>Explorer</h3>
               <p>Browse blocks and transactions, plus schedules when relevant.</p>
@@ -320,13 +320,26 @@
       <section id="quickstart" class="section">
         <div class="container">
           <h2>Quick Start</h2>
-          <p class="muted section-lead">Start a node, open the wallet, and (optionally) connect a miner.</p>
+          <p class="muted section-lead">Choose your path: light wallet (no node required) or full node + optional mining.</p>
 
           <div class="quickstart-grid">
+            <div class="panel reveal" id="quickstart-light">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Use the light wallet</span>
+                <span class="badge">Desktop</span>
+              </div>
+              <div class="panel-body">
+                <ul class="list">
+                  <li><strong>Download:</strong> <a class="inline-link" target="_blank" rel="noreferrer" href="https://github.com/Baseline-Blockchain/baseline-light/releases/latest">Latest release (Win/macOS/Linux)</a>.</li>
+                  <li><strong>Keys stay local:</strong> Create or import; signing happens on-device.</li>
+                </ul>     
+              </div>
+            </div>
+
             <div class="panel reveal">
               <div class="panel-head">
                 <span class="panel-title"><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Run a node</span>
-                <span class="badge">Local</span>
+                <span class="badge">Full</span>
               </div>
               <div class="panel-body">
                 <div class="os-tabs" aria-label="Quick start commands by operating system">
@@ -336,7 +349,7 @@
                     <label for="os-win">Windows</label>
                     <label for="os-unix">macOS / Linux</label>
                   </div>
-                  <div class="os-panels">
+                  <div class="os-panels" id="node-start">
                     <div class="os-panel os-win">
                       <div class="codewrap">
                         <button class="copy-btn" type="button" title="Copy" aria-label="Copy commands">
@@ -373,28 +386,6 @@ baseline-node --config config.json</code></pre>
 
             <div class="panel reveal">
               <div class="panel-head">
-                <span class="panel-title"><i class="bi bi-wallet2 icon" aria-hidden="true"></i>Open the wallet</span>
-                <span class="badge">GUI</span>
-              </div>
-              <div class="panel-body">
-                <div class="codewrap">
-                  <button class="copy-btn" type="button" title="Copy" aria-label="Copy command">
-                    <i class="bi bi-clipboard"></i>
-                  </button>
-                  <pre class="codeblock"><code>baseline-wallet-gui</code></pre>
-                </div>
-                <p class="muted fineprint">The wallet talks to your local node via JSON-RPC (start the node first).</p>
-                <p class="muted fineprint">
-                  Requires Python's Tkinter GUI libs (bundled on Windows/macOS; on Linux install <code>python3-tk</code> or <code>python3-tkinter</code>).
-                </p>
-                <p class="muted fineprint">
-                  Light wallets are coming soon. Meanwhile, the GUI works as a full node wallet.
-                </p>
-              </div>
-            </div>
-
-            <div class="panel reveal">
-              <div class="panel-head">
                 <span class="panel-title"><i class="bi bi-cpu icon" aria-hidden="true"></i>Mine (optional)</span>
                 <span class="badge">Stratum</span>
               </div>
@@ -407,6 +398,7 @@ baseline-node --config config.json</code></pre>
                 </div>
                 <p class="muted fineprint">
                   Requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).
+                  Use <code>baseline-wallet</code> CLI to manage payout keys and sweep funds.
                   See <a class="inline-link" target="_blank" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#mining">README Mining</a>.
                 </p>
               </div>
