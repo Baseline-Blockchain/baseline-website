@@ -391,12 +391,41 @@ baseline-node --config config.json</code></pre>
                 <span class="badge">Stratum</span>
               </div>
               <div class="panel-body">
-                <div class="codewrap">
-                  <button class="copy-btn" type="button" title="Copy" aria-label="Copy command">
-                    <i class="bi bi-clipboard"></i>
-                  </button>
-                  <pre class="codeblock"><code>python3 -m pip install git+https://github.com/Baseline-Blockchain/baseline-miner.git
+                <div class="os-tabs" aria-label="Mining commands by operating system">
+                  <input class="os-tab" type="radio" name="mine-os" id="mine-os-win" checked>
+                  <input class="os-tab" type="radio" name="mine-os" id="mine-os-unix">
+                  <div class="os-tablist" aria-label="Operating system">
+                    <label for="mine-os-win">Windows</label>
+                    <label for="mine-os-unix">macOS / Linux</label>
+                  </div>
+                  <div class="os-panels">
+                    <div class="os-panel os-win">
+                      <div class="codewrap">
+                        <button class="copy-btn" type="button" title="Copy" aria-label="Copy commands">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                        <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-miner.git
+cd baseline-miner
+py -3 -m venv .venv
+.venv\Scripts\activate
+pip install -e .
 baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1</code></pre>
+                      </div>
+                    </div>
+                    <div class="os-panel os-unix">
+                      <div class="codewrap">
+                        <button class="copy-btn" type="button" title="Copy" aria-label="Copy commands">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                        <pre class="codeblock"><code>git clone https://github.com/Baseline-Blockchain/baseline-miner.git
+cd baseline-miner
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1</code></pre>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <p class="muted fineprint">
                   Requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).

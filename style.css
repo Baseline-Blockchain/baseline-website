@@ -1274,6 +1274,13 @@ h1 {
   color: rgba(248, 251, 255, 0.95);
 }
 
+#mine-os-win:checked ~ .os-tablist label[for="mine-os-win"],
+#mine-os-unix:checked ~ .os-tablist label[for="mine-os-unix"] {
+  background: rgba(71, 194, 255, 0.16);
+  border: 1px solid rgba(71, 194, 255, 0.22);
+  color: rgba(248, 251, 255, 0.95);
+}
+
 .os-panels .os-panel {
   display: none;
 }
@@ -1283,6 +1290,14 @@ h1 {
 }
 
 #os-unix:checked ~ .os-panels .os-unix {
+  display: block;
+}
+
+#mine-os-win:checked ~ .os-panels .os-win {
+  display: block;
+}
+
+#mine-os-unix:checked ~ .os-panels .os-unix {
   display: block;
 }
 
