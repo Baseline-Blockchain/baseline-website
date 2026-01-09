@@ -43,6 +43,52 @@
 
   setupExplorerLinks();
 
+  function setupOsTabs() {
+    var groups = document.querySelectorAll(".os-tabs");
+    if (!groups.length) return;
+
+    function setActive(group) {
+      if (!group || !group.querySelector) return;
+      var checked = group.querySelector("input.os-tab:checked");
+      if (!checked) return;
+
+      var id = String(checked.id || "");
+      var showWin = id.indexOf("unix") === -1;
+      var showClass = showWin ? "os-win" : "os-unix";
+
+      var labels = group.querySelectorAll(".os-tablist label");
+      for (var i = 0; i < labels.length; i++) {
+        var active = labels[i].getAttribute("for") === id;
+        if (active) {
+          labels[i].classList.add("is-active");
+          labels[i].setAttribute("aria-selected", "true");
+        } else {
+          labels[i].classList.remove("is-active");
+          labels[i].setAttribute("aria-selected", "false");
+        }
+      }
+
+      var panels = group.querySelectorAll(".os-panels .os-panel");
+      for (var j = 0; j < panels.length; j++) {
+        panels[j].style.display = panels[j].classList.contains(showClass) ? "block" : "none";
+      }
+    }
+
+    for (var g = 0; g < groups.length; g++) {
+      (function (group) {
+        var inputs = group.querySelectorAll("input.os-tab");
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].addEventListener("change", function () {
+            setActive(group);
+          });
+        }
+        setActive(group);
+      })(groups[g]);
+    }
+  }
+
+  setupOsTabs();
+
   var reveal = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
 
   function showAll() {
