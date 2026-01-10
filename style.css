@@ -9,6 +9,8 @@
   --border: rgba(255, 255, 255, 0.08);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
   font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --section-vertical: 4rem;
+  --section-grid-gap: 1.5rem;
 }
 
 * {
@@ -30,6 +32,7 @@ body {
     radial-gradient(800px 360px at 90% 0%, rgba(71, 194, 255, 0.12), transparent 60%),
     var(--bg);
   color: var(--text);
+  line-height: 1.6;
 }
 
 a {
@@ -64,6 +67,11 @@ a {
   background: rgba(12, 14, 20, 0.78);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }
 
 .header-inner {
@@ -155,7 +163,7 @@ a {
 }
 
 .hero {
-  padding: 3.5rem 0 2.5rem;
+  padding: 3.5rem 0 3rem;
 }
 
 .hero-grid {
@@ -556,7 +564,7 @@ h1 {
 }
 
 .section {
-  padding: 3rem 0;
+  padding: var(--section-vertical) 0;
 }
 
 .section.alt {
@@ -580,7 +588,7 @@ h1 {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--section-grid-gap);
 }
 
 .card {
@@ -616,7 +624,7 @@ h1 {
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: calc(var(--section-grid-gap) + 0.25rem);
   align-items: start;
 }
 
@@ -1168,7 +1176,7 @@ h1 {
 .quickstart-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--section-grid-gap);
   margin: 0 0 1.1rem;
 }
 
