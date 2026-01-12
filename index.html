@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0c0e14">
     <title>Baseline — Open Payment Network</title>
-    <meta name="description" content="Baseline is an open payment network: simple transfers, public verification.">
+    <meta name="description" content="Baseline is an open payment network with CPU/GPU mining. No ASICs — mine BLINE with your existing hardware.">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css?v=2">
@@ -25,7 +25,7 @@
         <nav class="nav" aria-label="Primary navigation">
           <a href="#features">Why</a>
           <a href="#payments">Payments</a>
-          <a href="#earn">Earn</a>
+          <a href="#earn">Mine</a>
           <a href="#tools">Tools</a>
           <a class="nav-external" data-explorer-link target="_blank" rel="noreferrer" href="https://explorer.baseline.cash">Explorer</a>
           <a class="cta" href="#quickstart">Quick Start</a>
@@ -107,7 +107,7 @@
 
             <div class="hero-visual-footer">
               <span class="badge">BLINE</span>
-              <span class="muted">Fast blocks &middot; Public verification &middot; Simple stack</span>
+              <span class="muted">No ASICs &middot; CPU/GPU mining &middot; 20s blocks</span>
             </div>
           </div>
         </div>
@@ -140,16 +140,16 @@
             <div class="advanced-body">
               <div class="cards advanced-cards">
                 <div class="card">
-                  <h3>Mining rigs</h3>
-                  <p>Connect CPU/GPU miners via Stratum v1 and secure the network.</p>
+                  <h3>CPU/GPU friendly</h3>
+                  <p>SHA256d with modified byte order — Bitcoin ASICs don't work here. Mine with your existing hardware.</p>
+                </div>
+                <div class="card">
+                  <h3>Built-in pool</h3>
+                  <p>Every node can run a Stratum v1 pool with automatic payouts. No extra software needed.</p>
                 </div>
                 <div class="card">
                   <h3>Operators</h3>
                   <p>Bitcoin Core-ish JSON-RPC plus an address index for explorers and integrations.</p>
-                </div>
-                <div class="card">
-                  <h3>Technical terms</h3>
-                  <p>Proof-of-Work &middot; Stratum &middot; JSON-RPC.</p>
                 </div>
               </div>
             </div>
@@ -233,22 +233,22 @@
 
       <section id="earn" class="section">
         <div class="container">
-          <h2>Earn by securing the network</h2>
+          <h2>Mine with your hardware</h2>
           <p class="muted section-lead">
-            If you run CPU/GPU mining software, you can connect it to a Baseline node and contribute security.
+            Baseline uses SHA256d with a modified byte order that makes Bitcoin ASICs incompatible. Your CPU or GPU can compete fairly.
           </p>
           <div class="cards">
             <div class="card reveal">
-              <h3><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Run a node</h3>
-              <p>Stay synced and provide work to miners via Stratum.</p>
+              <h3><i class="bi bi-cpu icon" aria-hidden="true"></i>No ASICs</h3>
+              <p>Modified header format means existing Bitcoin mining hardware won't work. Level playing field for everyone.</p>
             </div>
             <div class="card reveal">
-              <h3><i class="bi bi-plug icon" aria-hidden="true"></i>Connect a miner</h3>
-              <p>Point CPU/GPU miners to your node and set a payout address.</p>
+              <h3><i class="bi bi-hdd-network icon" aria-hidden="true"></i>Built-in pools</h3>
+              <p>Every node can be a pool. Run your own or join the public pool — payouts are automatic.</p>
             </div>
             <div class="card reveal">
-              <h3><i class="bi bi-receipt icon" aria-hidden="true"></i>Track payouts</h3>
-              <p>Payouts are tracked and auditable as they mature.</p>
+              <h3><i class="bi bi-lightning icon" aria-hidden="true"></i>20-second blocks</h3>
+              <p>Fast blocks mean quicker rewards and responsive difficulty adjustments.</p>
             </div>
           </div>
 
@@ -256,7 +256,7 @@
             <div class="miner" aria-hidden="true">
               <div class="miner-top">
                 <span class="miner-title"><i class="bi bi-gpu-card"></i> CPU/GPU Miner</span>
-                <span class="miner-pill">SHA256d</span>
+                <span class="miner-pill">No ASICs</span>
               </div>
               <div class="miner-body">
                 <div class="miner-fans">
