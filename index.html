@@ -409,7 +409,11 @@ cd baseline-miner
 py -3 -m venv .venv
 .venv\Scripts\activate
 pip install -e .
-baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1</code></pre>
+# SOLO MINING
+baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1
+# POOL MINING
+baseline-miner --host pool.baseline.cash --port 3333 --address YOURADDRESS --worker worker1
+                        </code></pre>
                       </div>
                     </div>
                     <div class="os-panel os-unix">
@@ -422,13 +426,17 @@ cd baseline-miner
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
-baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1</code></pre>
+# SOLO MINING
+baseline-miner --host 127.0.0.1 --port 3333 --address YOURADDRESS --worker worker1
+# POOL MINING
+baseline-miner --host pool.baseline.cash --port 3333 --address YOURADDRESS --worker worker1
+                        </code></pre>
                       </div>
                     </div>
                   </div>
                 </div>
                 <p class="muted fineprint">
-                  Requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).
+                  Solo Mining requires Stratum enabled in your node config (set <code>mining.pool_private_key</code>).
                   Mining requires Python + a C compiler to build the native hashing extension.
                   Use <code>baseline-wallet</code> CLI to manage payout keys and sweep funds.
                   See <a class="inline-link" target="_blank" href="https://github.com/Baseline-Blockchain/baseline-node?tab=readme-ov-file#mining">README Mining</a>.
