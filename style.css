@@ -1483,6 +1483,7 @@ h1 {
   .hero-visual  {
    display: none;
   }
+  .header-inner{flex-direction: column;}
 }
 
 @media (prefers-reduced-motion: reduce) {
