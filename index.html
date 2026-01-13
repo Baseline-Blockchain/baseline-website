@@ -8,7 +8,7 @@
     <meta name="description" content="Baseline is an open payment network with CPU/GPU mining. No ASICs — mine BLINE with your existing hardware.">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=33">
   </head>
   <body data-explorer-url="https://explorer.baseline.cash">
     <header class="top">
@@ -450,6 +450,76 @@ baseline-miner --gpu --host pool.baseline.cash --port 3333 --address YOURADDRESS
           </div>
         </div>
       </section>
+      <section id="roadmap" class="section alt">
+  <div class="container">
+    <h2>Roadmap</h2>
+    <p class="muted section-lead">
+      Baseline is built for rule stability, verifiability, and a miner-first security story.
+      This roadmap is intentionally conservative: we ship improvements only when they strengthen security
+      and keep the protocol minimal.
+    </p>
+
+    <div class="roadmap-grid">
+      <div class="panel reveal">
+        <div class="panel-head">
+          <span class="panel-title"><i class="bi bi-flag icon" aria-hidden="true"></i>Now</span>
+          <span class="badge">Next releases</span>
+        </div>
+        <div class="panel-body">
+          <ul class="list">
+            <li><strong>Consensus &amp; policy spec:</strong> versioned rules document + clear divergences.</li>
+            <li><strong>Test vectors:</strong> hashing/byte-order, LWMA difficulty, coinbase/dev-fund, schedules.</li>
+            <li><strong>Network status:</strong> hashrate estimate, orphan rate, reorg log, difficulty view.</li>
+            <li><strong>Mining UX:</strong> “mine in 10 minutes” + “run your own pool” defaults and docs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <div class="panel-head">
+          <span class="panel-title"><i class="bi bi-tools icon" aria-hidden="true"></i>Next</span>
+          <span class="badge">Operator-first</span>
+        </div>
+        <div class="panel-body">
+          <ul class="list">
+            <li><strong>Node hardening:</strong> safe-by-default config templates + RPC exposure guidance.</li>
+            <li><strong>Monitoring:</strong> metrics/log formats + alerting recommendations.</li>
+            <li><strong>Release discipline:</strong> deterministic build notes, upgrade guides.</li>
+            <li><strong>Explorer primitives:</strong> better reorg visualization and fee/mempool stats.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <div class="panel-head">
+          <span class="panel-title"><i class="bi bi-shield-check icon" aria-hidden="true"></i>Later</span>
+          <span class="badge">No bloat, no fork treadmill</span>
+        </div>
+        <div class="panel-body">
+          <ul class="list">
+            <li><strong>Propagation improvements:</strong> reduce orphan risk without bloating consensus.</li>
+            <li><strong>Difficulty edge-case hardening:</strong> clamp/guardrails based on real-world data.</li>
+            <li><strong>Miner/pool auditability:</strong> transparency dashboards and reference tooling.</li>
+            <li><strong>Ecosystem glue:</strong> exchange integration docs + opt-in pool/node directory.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <details class="advanced reveal" style="margin-top: 1.25rem;" open="">
+      <summary>Non-goals (what we won’t do)</summary>
+      <div class="advanced-body">
+        <ul class="list">
+          <li>No platform pivot: Baseline is not trying to become a general smart-contract/DeFi chain.</li>
+          <li>No fork treadmill: we won’t change PoW on a schedule; changes happen only for clear security reasons.</li>
+          <li>No governance bloat: decisions stay transparent and off-chain; consensus changes require broad ecosystem agreement.</li>
+          <li>Marketing-first promises that compromise rule stability.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
     </main>
 
     <footer class="footer">
