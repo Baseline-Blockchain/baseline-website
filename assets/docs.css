@@ -142,26 +142,28 @@ body {
 }
 
 /* Code Blocks aligned with Explorer 'panel' style */
-/* Code Blocks aligned with Explorer 'panel' style */
-.docs-content pre,
-.docs-content .highlight {
+/* Code Blocks */
+.docs-content div.highlight,
+.docs-content pre {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 12px;
     margin-bottom: 1.5rem;
+    padding: 1.2rem;
     overflow-x: auto;
 }
 
-.docs-content pre {
-    padding: 1.2rem;
-    margin: 0;
+/* Reset inner pre when inside a highlight wrapper */
+.docs-content div.highlight pre {
+    background: transparent;
     border: none;
     border-radius: 0;
-    background: transparent;
+    margin: 0;
+    padding: 0;
 }
 
 .docs-content code {
-    font-family: "Consolas", "SFMono-Regular", monospace;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     background: rgba(255, 255, 255, 0.06);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
@@ -173,6 +175,7 @@ body {
     background: none;
     padding: 0;
     color: #e6edf3;
+    font-size: 0.9rem;
 }
 
 /* Tables matching Explorer tables */
@@ -291,6 +294,10 @@ body {
 
     .docs-sidebar.active {
         display: flex;
+    }
+
+    .mobile-menu-header {
+        display: flex !important;
     }
 
     .docs-main {

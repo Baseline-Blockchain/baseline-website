@@ -19,11 +19,11 @@ Baseline Cash (BLINE) uses a set of consensus constants designed for speed and f
 
 ## Ports
 
-| Service | Mainnet | Testnet (Regtest) |
-|---------|---------|-------------------|
-| **P2P** | 9333 | 19333 |
-| **RPC** | 8832 | 18832 |
-| **Stratum** | 3333 | 13333 |
+| Service | Mainnet |
+|---------|---------|
+| **P2P** | 9333 |
+| **RPC** | 8832 |
+| **Stratum** | 3333 |
 
 ## Emission Schedule
 

@@ -13,7 +13,7 @@ Baseline Cash is a decentralized project. There is no CEO or central server. Gov
 Significant changes follow the **Baseline Improvement Proposal (BIP)** process:
 
 1.  **Draft**: A proposal is written and shared for community discussion (GitHub/Discord).
-2.  **Code**: Once agreed upon, code is implemented and tested on Testnet.
+2.  **Code**: Once agreed upon, code is implemented and tested.
 3.  **Signaling**: Miners signal support for the upgrade using **Version Bits** in block headers.
 4.  **Activation**: If >95% of hashpower signals support, the upgrade locks in and activates automatically.
 

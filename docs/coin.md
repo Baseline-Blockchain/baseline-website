@@ -48,8 +48,8 @@ The smallest unit is a **Liner**.
 
 ## Ports
 
-| Service | Mainnet | Testnet |
-|---------|---------|---------|
-| P2P | 9333 | 19333 |
-| RPC | 8832 | 18832 |
-| Stratum | 3333 | 13333 |
+| Service | Mainnet |
+|---------|---------|
+| P2P | 9333 |
+| RPC | 8832 |
+| Stratum | 3333 |
