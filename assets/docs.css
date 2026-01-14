@@ -141,6 +141,14 @@ body {
     text-decoration: underline;
 }
 
+/* Responsive Images */
+.docs-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
 /* Code Blocks aligned with Explorer 'panel' style */
 /* Code Blocks */
 .docs-content div.highlight,
