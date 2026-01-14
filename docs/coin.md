@@ -27,6 +27,8 @@ Baseline uses a continuous emission model rather than sudden "halvings". This en
 - **Half-Life**: 4,158,884 blocks (~2.64 years).
 - **Formula**: Rewards decay smoothly every block on an exponential curve.
 
+![Baseline Cash Supply Curve](/assets/supply_curve.png)
+
 ### Supply Cap
 The supply is capped at exactly **300,000,000 BLINE** (defined as `MAX_MONEY` in `core/tx.py`). The emission curve is asymptotic to this value.
 
