@@ -1,0 +1,10 @@
+title: Baseline Cash Docs
+description: Documentation for Baseline Cash
+baseurl: ""
+url: "https://baseline.cash"
+markdown: kramdown
+permalink: /docs/:basename/
+exclude:
+  - node_modules
+  - Gemfile
+  - Gemfile.lock

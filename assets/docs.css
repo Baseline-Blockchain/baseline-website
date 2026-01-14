@@ -1,0 +1,294 @@
+/* Inherit variables from Explorer style.css to ensure consistency */
+:root {
+    --bg: #11131a;
+    --panel: #1b1f2d;
+    --accent: #47c2ff;
+    --muted: #8892b0;
+    --text: #f8fbff;
+    --border: rgba(255, 255, 255, 0.05);
+    --header-height: 72px;
+    --sidebar-width: 280px;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    display: block;
+}
+
+/* Layout Grid */
+.docs-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar styling to match Explorer panels */
+.docs-sidebar {
+    background: #0c0e14;
+    /* Darker than panel, similar to explorer top-bar */
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.docs-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.docs-nav-group {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.docs-nav-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.docs-nav-link {
+    display: block;
+    text-decoration: none;
+    color: rgba(248, 251, 255, 0.8);
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.15s ease;
+}
+
+.docs-nav-link:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+}
+
+.docs-nav-link.active {
+    background: rgba(71, 194, 255, 0.12);
+    color: var(--accent);
+    font-weight: 600;
+    border: 1px solid rgba(71, 194, 255, 0.2);
+}
+
+/* Content Area */
+.docs-main {
+    padding: 3rem 4rem;
+    max-width: 960px;
+    width: 100%;
+}
+
+/* Typography & Content Styles */
+.docs-content {
+    line-height: 1.7;
+    color: #dbe4f0;
+}
+
+.docs-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.docs-content h2 {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.docs-content h3 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.docs-content p {
+    margin-bottom: 1.25rem;
+}
+
+.docs-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.docs-content a:hover {
+    text-decoration: underline;
+}
+
+/* Code Blocks aligned with Explorer 'panel' style */
+.docs-content pre {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.docs-content code {
+    font-family: "Consolas", "SFMono-Regular", monospace;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #a5d6ff;
+}
+
+.docs-content pre code {
+    background: none;
+    padding: 0;
+    color: #e6edf3;
+}
+
+/* Tables matching Explorer tables */
+.docs-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background: var(--panel);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.docs-content th,
+.docs-content td {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+.docs-content th {
+    background: rgba(255, 255, 255, 0.02);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.docs-content tr:last-child td {
+    border-bottom: none;
+}
+
+/* Alerts / Callouts */
+.callout {
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+    background: var(--panel);
+}
+
+.callout-tip {
+    border-color: var(--accent);
+    background: rgba(71, 194, 255, 0.08);
+    /* slightly transparent accent */
+}
+
+.callout-warning {
+    border-color: #ffbd2e;
+    background: rgba(255, 189, 46, 0.08);
+}
+
+/* Cards (Grid layout for index/landing) */
+.cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin: 2rem 0;
+}
+
+.card {
+    background: var(--panel);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, border-color 0.2s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card p {
+    color: var(--muted);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.icon {
+    color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .docs-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .docs-sidebar {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        background: var(--bg);
+    }
+
+    .docs-sidebar.active {
+        display: flex;
+    }
+
+    .docs-main {
+        padding: 2rem 1.5rem;
+    }
+
+    .mobile-nav-toggle {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        background: #0c0e14;
+    }
+}

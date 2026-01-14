@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/assets/docs.css">
+</head>
+
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-nav-toggle d-lg-none">
+        <a href="/" class="brand">
+            <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+            <span class="brand-text">Baseline Docs</span>
+        </a>
+        <button id="docs-menu-btn" class="button ghost" style="padding: 0.4rem;" aria-label="Menu">
+            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-sidebar">
+            <a href="/" class="docs-brand">
+                <img src="/assets/logo.png" alt="Baseline Cash" width="36" height="36">
+                <span>Baseline Docs</span>
+            </a>
+
+            <nav class="docs-nav">
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Start</div>
+                    <a href="/docs/introduction/"
+                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                    <a href="/docs/mining/"
+                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Operators</div>
+                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                        a Pool</a>
+                    <a href="/docs/params/"
+                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                    <a href="/docs/exchange/"
+                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        Integration</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Reference</div>
+                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                        API</a>
+                    <a href="/docs/spec/"
+                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                    <a href="/docs/networking/"
+                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                    <a href="/docs/governance/"
+                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                </div>
+            </nav>
+
+            <div style="margin-top: auto;">
+                <a href="/" class="button ghost" style="width: 100%; justify-content: start;">
+                    <i class="bi bi-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </aside>
+
+        <main class="docs-main">
+            <article class="docs-content">
+                <h1>{{ page.title }}</h1>
+                {{ content }}
+            </article>
+
+            <footer
+                style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;">
+                <p>Found a typo? <a href="https://github.com/Baseline-Blockchain/baseline-website" target="_blank"
+                        class="inline-link">Edit this page on GitHub</a>.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Simple mobile toggle
+        const btn = document.getElementById('docs-menu-btn');
+        const sidebar = document.getElementById('docs-sidebar');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                if (sidebar.classList.contains('active')) {
+                    sidebar.style.display = 'flex';
+                    sidebar.style.background = '#0c0e14';
+                } else {
+                    sidebar.style.display = '';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
