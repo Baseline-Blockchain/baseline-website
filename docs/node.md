@@ -15,41 +15,39 @@ Running a full node is the best way to support the network and ensure your own f
 
 ## Installation
 
-The easiest way to install Baseline is via `pip`.
+The recommended way to run a node is to clone the repository and install it in a virtual environment.
 
-```bash
-pip install git+https://github.com/Baseline-Blockchain/baseline-node.git
-```
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/Baseline-Blockchain/baseline-node.git
+    cd baseline-node
+    ```
 
-## Running the Node
+2.  **Set up Python Environment**:
+    ```bash
+    python -m venv .venv
+    
+    # Windows
+    .venv\Scripts\activate
+    
+    # Linux / macOS
+    source .venv/bin/activate
+    ```
 
-Once installed, you can start the node with a single command:
-
-```bash
-baseline-node
-```
-
-The first time you run it, it will:
-1.  Create a data directory in `~/.baseline` (Linux/Mac) or `%USERPROFILE%\.baseline` (Windows).
-2.  Generate a `config.json` with default settings.
-3.  Start synchronizing with the network.
-
-### Checking Status
-
-You can verify your node is running by querying the block count:
-
-```bash
-# In a new terminal
-baseline-cli getblockcount
-```
-
-If it returns a number (e.g., `15420`), your node is active!
+3.  **Install**:
+    ```bash
+    pip install -e .
+    ```
 
 ## Configuration
 
-You can customize your node by editing `config.json` in your data directory.
+Before running the node, you need to configure it. The repository includes a `config.json` file which you should edit.
 
-**Common Settings:**
+**Key Settings:**
+-   **RPC Password**: You **must** change the `rpc.password` to something secure.
+-   **Peers**: The default `config.json` includes mainnet seeds.
+
+**Minimal Example:**
 
 ```json
 {
@@ -60,10 +58,26 @@ You can customize your node by editing `config.json` in your data directory.
   "rpc": {
     "enabled": true,
     "username": "rpcuser",
-    "password": "rpcpass" # CHANGE THIS!
+    "password": "YOUR_SECURE_PASSWORD"
   }
 }
 ```
+
+> [!TIP]
+> **Mining Support**
+> Every Baseline node is also a mining pool! If you want to mine, see the [Pool Guide](/docs/pool/).
+
+## Running the Node
+
+Once configured, start the node:
+
+```bash
+baseline-node --config config.json
+```
+
+The node will initialize the blockchain database (Chainstate) and begin syncing.
+
+### Checking Status
 
 > [!TIP]
 > **Mining Support**
@@ -95,4 +109,14 @@ Enable and start it:
 ```bash
 sudo systemctl enable baseline
 sudo systemctl start baseline
+```
+
+## Troubleshooting
+
+### Resync from Scratch
+
+If your chainstate is corrupted or you need to resync from genesis, use the `--reset-chainstate` flag. This wipes the blockchain data and peers but **keeps your wallet and payout keys safe**.
+
+```bash
+baseline-node --config config.json --reset-chainstate
 ```
