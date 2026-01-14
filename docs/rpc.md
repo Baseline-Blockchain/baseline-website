@@ -4,7 +4,7 @@ title: RPC API
 permalink: /docs/rpc/
 ---
 
-# JSON-RPC API
+
 
 The Baseline node exposes an HTTP JSON-RPC API for programmatic access. It is largely compatible with Bitcoin Core, with additions for the built-in pool and address index.
 

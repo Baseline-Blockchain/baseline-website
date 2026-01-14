@@ -4,7 +4,7 @@ title: Exchange Integration
 permalink: /docs/exchange/
 ---
 
-# Exchange Integration Guide
+
 
 Baseline Cash is designed for easy integration. While it is a **Python implementation** (not a Bitcoin Core fork), its RPC and transaction model align with Bitcoin Core standards for compatibility.
 

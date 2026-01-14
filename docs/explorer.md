@@ -4,7 +4,7 @@ title: Block Explorer
 permalink: /docs/explorer/
 ---
 
-# Block Explorer
+
 
 The Baseline Block Explorer allows you to search the blockchain for transactions, blocks, and addresses.
 

@@ -4,7 +4,7 @@ title: Run a Pool
 permalink: /docs/pool/
 ---
 
-# Run a Mining Pool
+
 
 One of Baseline's unique features is that **every full node is a production-grade mining pool**. You don't need separate software like NOMP or Yiimp.
 

@@ -4,7 +4,7 @@ title: Protocol Specification
 permalink: /docs/spec/
 ---
 
-# Protocol Specification
+
 
 This document defines the consensus rules and data structures for Baseline Cash.
 

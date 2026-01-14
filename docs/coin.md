@@ -4,7 +4,7 @@ title: Baseline Cash (BLINE)
 permalink: /docs/coin/
 ---
 
-# Baseline Cash (BLINE)
+
 
 Baseline Cash is a decentralized digital currency designed for fair distribution and reliable payments. It is a **clean-room Python implementation** of a Bitcoin-like protocol, optimized for consumer hardware.
 

@@ -4,7 +4,7 @@ title: Governance
 permalink: /docs/governance/
 ---
 
-# Governance
+
 
 Baseline Cash is a decentralized project. There is no CEO or central server. Governance happens through code and consensus.
 

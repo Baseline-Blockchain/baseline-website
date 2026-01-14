@@ -4,7 +4,7 @@ title: Networking
 permalink: /docs/networking/
 ---
 
-# Networking
+
 
 Baseline nodes communicate via a TCP-based peer-to-peer protocol.
 

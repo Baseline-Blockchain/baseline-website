@@ -4,7 +4,7 @@ title: Mining Guide
 permalink: /docs/mining/
 ---
 
-# How to Mine Baseline Cash
+
 
 Baseline Cash is designed to be mined with consumer hardware (CPUs and GPUs). It implements a modified version of the SHA256d proof-of-work protocol:
 

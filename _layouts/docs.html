@@ -37,6 +37,10 @@
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
                         class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                    <a href="/docs/coin/"
+                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                    <a href="/docs/wallet/"
+                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
                     <a href="/docs/mining/"
                         class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
                 </div>
@@ -54,6 +58,9 @@
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
+                    <a href="/docs/explorer/"
+                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        Explorer</a>
                     <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
                         API</a>
                     <a href="/docs/spec/"
@@ -101,6 +108,25 @@
                 }
             });
         }
+
+        // GitHub-style Alerts
+        document.querySelectorAll('blockquote').forEach(bq => {
+            const firstP = bq.querySelector('p');
+            if (!firstP) return;
+
+            const text = firstP.innerHTML;
+            const alertMatch = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);
+
+            if (alertMatch) {
+                const type = alertMatch[1].toLowerCase();
+                bq.classList.add('callout', `callout-${type}`);
+                // Remove the [!TYPE] marker
+                firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
+
+                // Add icon/title if needed, or just let CSS handle the styling
+                // We'll rely on docs.css .callout-* classes
+            }
+        });
     </script>
 </body>
 

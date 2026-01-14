@@ -4,7 +4,7 @@ title: Network Parameters
 permalink: /docs/params/
 ---
 
-# Network Parameters
+
 
 Baseline Cash (BLINE) uses a set of consensus constants designed for speed and fair distribution.
 

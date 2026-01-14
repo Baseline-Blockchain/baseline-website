@@ -4,7 +4,7 @@ title: Introduction
 permalink: /docs/introduction/
 ---
 
-# Welcome to Baseline Cash
+
 
 Baseline Cash is a straightforward, open payment network designed for simplicity and fairness. It strips away the complexity of modern "crypto platforms" to focus on one thing: **moving value reliably**.
 

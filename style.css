@@ -134,11 +134,7 @@ main {
 .nav {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  gap: 0.5rem;
 }
 
 .nav a {
@@ -1525,7 +1521,9 @@ h1 {
     gap: 0.25rem;
     border-radius: 18px;
     padding: 0.6rem;
-    background: rgba(12, 14, 20, 0.55);
+    background: rgba(12, 14, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
   }
 
   .nav a {

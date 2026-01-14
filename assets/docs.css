@@ -142,13 +142,22 @@ body {
 }
 
 /* Code Blocks aligned with Explorer 'panel' style */
-.docs-content pre {
+/* Code Blocks aligned with Explorer 'panel' style */
+.docs-content pre,
+.docs-content .highlight {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.2rem;
-    overflow-x: auto;
     margin-bottom: 1.5rem;
+    overflow-x: auto;
+}
+
+.docs-content pre {
+    padding: 1.2rem;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
 }
 
 .docs-content code {
@@ -259,6 +268,11 @@ body {
 
 .icon {
     color: var(--accent);
+}
+
+/* Mobile Toggle Visibility */
+.mobile-nav-toggle {
+    display: none;
 }
 
 /* Mobile */

@@ -4,7 +4,7 @@ title: Wallet Guide
 permalink: /docs/wallet/
 ---
 
-# Wallet Guide
+
 
 Baseline Cash offers two ways to manage your funds: the **Light Wallet** for most users, and the **Node Wallet** for power users.
 
