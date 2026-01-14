@@ -17,14 +17,28 @@ Baseline Cash is designed to be mined with consumer hardware (CPUs and GPUs). It
 
 ## 1. Get a Miner
 
-The official reference miner supports both CPU and GPU mining.
+The reference miner is Python-based (open source).
 
-**[Download baseline-miner](https://github.com/Baseline-Blockchain/baseline-miner)** (Python-based)
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/Baseline-Blockchain/baseline-miner.git
+    cd baseline-miner
+    ```
 
-To install via pip:
-```bash
-pip install git+https://github.com/Baseline-Blockchain/baseline-miner.git
-```
+2.  **Install**:
+    It is recommended to use a virtual environment:
+    ```bash
+    python -m venv .venv
+    
+    # Windows
+    .venv\Scripts\activate
+    
+    # Linux / macOS
+    source .venv/bin/activate
+    
+    # Install
+    pip install -e .
+    ```
 
 ## 2. Connect to a Pool
 
