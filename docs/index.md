@@ -8,7 +8,7 @@ permalink: /docs/introduction/
 
 Baseline Cash is a straightforward, open payment network designed for simplicity and fairness. It strips away the complexity of modern "crypto platforms" to focus on one thing: **moving value reliably**.
 
-- **No ASICs**: Mine with your existing CPU or GPU.
+- **CPU/GPU Mining**: Reference miners support CPUs and GPUs on SHA256d.
 - **No Gatekeepers**: Anyone can run a node or a pool.
 - **No Signup**: Just generate a wallet and go.
 
@@ -16,8 +16,8 @@ Baseline Cash is a straightforward, open payment network designed for simplicity
 
 We built Baseline to return to the roots of peer-to-peer cash, but with modern operational improvements.
 
-### 1. Fair Mining for Everyone
-Unlike Bitcoin, where you need million-dollar warehouses of specialized hardware (ASICs) to compete, Baseline uses a modified proof-of-work algorithm. This means the gaming PC or workstation you already own is a first-class citizen on the network.
+### 1. Accessible Mining Tooling
+Baseline ships with open-source CPU/GPU miners and built-in pool support, so you can start mining or run a community pool without extra infrastructure.
 
 ### 2. Built-in Pools
 Running a mining pool usually requires complex custom software. In Baseline, **every node is a pool**. You can spin up a node and let your friends mine to it immediately. Payouts are handled automatically by the protocol.

@@ -19,16 +19,13 @@ Baseline nodes communicate via a TCP-based peer-to-peer protocol.
 ## Peer Discovery
 
 When you start a node, it finds peers using:
-1.  **Manual Seeds**: Defined in your `config.json` under `network.seeds`. This is the primary method for bootstrapping.
-2.  **Gossip**: Once connected, peers share known addresses with each other.
-
-> [!NOTE]
-> **No DNS Seeds**
-> There are currently no active DNS seeds. You must rely on the manual seed list to bootstrap.
+1.  **Manual Seeds**: Defined in your `config.json` under `network.seeds`.
+2.  **DNS Seeds**: Optional hostnames in `network.dns_seeds` (queried if manual seeds/address book are insufficient).
+3.  **Address Book + Gossip**: The node persists known peers on disk and also learns more via `addr` gossip.
 
 ### Configuration
 
-You must configure at least one seed in `config.json` to join the network:
+For a first-time startup on a new data directory, configure at least one seed (manual or DNS) to join the public network:
 
 ```json
 "network": {
@@ -46,6 +43,6 @@ You must configure at least one seed in `config.json` to join the network:
 
 ## Protocol Security
 
-- **Banning**: Nodes that send invalid data or spam are banned for **24 hours**.
+- **Banning**: Repeated violations trigger progressive bans (up to 24 hours).
 - **Handshake**: Peers exchange version messages to ensure protocol compatibility.
-- **Time Sync**: The node uses a built-in NTP client to **actively synchronise** its internal clock with pool.ntp.org. This ensures accurate block timestamps and prevents consensus issues effectively overriding the system time for node operations.
+- **Time Sync**: The node maintains an NTP-based time offset (does not change system time) using the servers in `ntp.servers`.

@@ -51,12 +51,12 @@ Before running the node, you need to configure it. The repository includes a `co
 
 ```json
 {
-  "p2p": {
+  "network": {
     "port": 9333,
-    "max_peers": 64
+    "max_peers": 64,
+    "seeds": ["109.104.154.151:9333"]
   },
   "rpc": {
-    "enabled": true,
     "username": "rpcuser",
     "password": "YOUR_SECURE_PASSWORD"
   }

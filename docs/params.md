@@ -13,7 +13,7 @@ Baseline Cash (BLINE) uses a set of consensus constants designed for speed and f
 | Parameter | Value | Notes |
 | :--- | :--- | :--- |
 | **Block Time** | 20 Seconds | ~4,320 blocks per day. |
-| **Algorithm** | Modified SHA256d | Incompatible with Bitcoin ASICs. |
+| **Algorithm** | SHA256d | Standard double-SHA256 proof-of-work. |
 | **Difficulty** | LWMA-based | Adjusts every block based on recent history. |
 | **Max Supply** | **300,000,000** | Strict limit (`MAX_MONEY`). |
 

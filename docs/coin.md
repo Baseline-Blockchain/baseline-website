@@ -13,7 +13,7 @@ Baseline Cash is a decentralized digital currency designed for fair distribution
 | Property | Value |
 |----------|-------|
 | **Ticker** | `BLINE` |
-| **Consensus** | Modified SHA256d |
+| **Consensus** | SHA256d |
 | **Max Supply** | **300,000,000 BLINE**. Hardcoded limit (`MAX_MONEY`). |
 | **Block Time** | 20 Seconds |
 | **Premine** | 0 BLINE (Fair Launch) |
@@ -34,10 +34,8 @@ The supply is capped at exactly **300,000,000 BLINE** (defined as `MAX_MONEY` in
 
 ## Technical Specifications
 
-### No ASICs
-Baseline forces a **Big-Endian byte order** for block header hashes (`prev_hash` and `merkle_root`).
-- **Bitcoin ASICs**: Hardcoded to Little-Endian. They produce invalid hashes on Baseline.
-- **Result**: You can mine effectively with CPUs and GPUs.
+### Proof-of-Work
+Baseline uses standard **SHA256d** proof-of-work on the block header (Bitcoin-style serialization and hash comparison). However there key differences that make Bitcoin ASICs incompatible.
 
 ### Difficulty Adjustment
 We use **LWMA (Linear Weighted Moving Average)** over a 60-block window.

@@ -14,7 +14,7 @@ Baseline Cash is designed for easy integration. While it is a **Python implement
 - **Binary**: Run `baseline-node` (Python 3.12+).
 - **Config**: Set a secure `rpc.username`/`rpc.password`.
 - **Wallet**: The built-in wallet is **enabled by default** and is required to generate addresses.
-- **Index**: The `addressindex` is on by default—useful for deposit tracking.
+- **Index**: The address index is always on (UTXO + history); no external indexer required for deposits.
 
 > See the [RPC API](/docs/rpc/) for a complete list of available methods.
 
@@ -22,8 +22,8 @@ Baseline Cash is designed for easy integration. While it is a **Python implement
 Baseline supports standard **P2PKH** addresses (starting with `N`).
 
 1. **Generate Address**: `getnewaddress "user_123"`
-2. **Monitor**: Poll `getaddressutxos` or `listtransactions`.
-3. **Confirmations**: Wait for **20 confirmations** (same as coinbase maturity) for finality.
+2. **Monitor**: Poll `getaddressutxos` / `getaddresstxids` for address-indexed tracking. `listtransactions` only covers wallet-managed addresses.
+3. **Confirmations**: 20 confirmations is a conservative policy (coinbase maturity is 20 blocks).
 
 ### 3. Withdrawal Architecture
 

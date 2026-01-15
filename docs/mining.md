@@ -6,14 +6,7 @@ permalink: /docs/mining/
 
 
 
-Baseline Cash is designed to be mined with consumer hardware (CPUs and GPUs). It implements a modified version of the SHA256d proof-of-work protocol:
-
-> [!TIP]
-> **No ASICs?**
-> Standard Bitcoin ASICs fail because Baseline forces **Big-Endian byte order** for the `prev_hash` and `merkle_root` fields.
-> - Bitcoin: Little-Endian
-> - Baseline: Big-Endian
-> This simple protocol change invalidates existing ASIC hardware.
+Baseline Cash uses standard SHA256d proof-of-work. The reference miner supports CPU and GPU mining; specialized hardware is not blocked at the protocol level. However, Bitcoin ASICs won't work due to differences in block header and difficulty calculation.
 
 ## 1. Get a Miner
 

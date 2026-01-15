@@ -14,11 +14,11 @@ Baseline Cash is a **Python-based implementation** of a Bitcoin-like protocol, o
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| **Hashing Algorithm** | `SHA256d` (Modified) | Double SHA-256 (Incompatible with BTC ASICs). |
-| **Byte Order** | **Big-Endian** | Headers use Big-Endian digest bytes (breaks BTC ASICs). |
+| **Hashing Algorithm** | `SHA256d` | Standard double SHA-256 of the block header. |
+| **Byte Order** | Bitcoin-style | Header fields serialize little-endian; hashes are displayed as big-endian hex. |
 | **Block Time** | `20 seconds` | Target interval between blocks. |
 | **Difficulty Algo** | `LWMA-60` | Linearly Weighted Moving Average (60 blocks). |
-| **Max Supply** | **300,000,000** | Hardcoded `MAX_MONEY` (checked in `tx.serialize`). |
+| **Max Supply** | **300,000,000** | Hardcoded `MAX_MONEY` (enforced during transaction validation). |
 | **Port (P2P)** | `9333` | Default P2P port. |
 
 ## 2. Block Logic
@@ -27,11 +27,11 @@ Blocks link together to form the immutable ledger.
 
 ### Header Structure
 
-The 80-byte header is similar to Bitcoin but validated differently.
+The 80-byte header follows Bitcoin-style serialization.
 
 - **Version** (`int32`): Upgrade tracking.
-- **Prev Hash** (`32 bytes`): Hash of the previous block (Big-Endian).
-- **Merkle Root** (`32 bytes`): Root of the transaction tree (Big-Endian).
+- **Prev Hash** (`32 bytes`): Previous block hash (serialized little-endian in the header).
+- **Merkle Root** (`32 bytes`): Transaction merkle root (serialized little-endian in the header).
 - **Timestamp** (`uint32`): Unix timestamp.
 - **Bits** (`uint32`): Compact difficulty target.
 - **Nonce** (`uint32`): Random value for Proof-of-Work.
@@ -40,9 +40,8 @@ The 80-byte header is similar to Bitcoin but validated differently.
 Miners must find a hash such that:
 `SHA256d(Header) <= Target(Bits)`
 
-> [!IMPORTANT]
-> **Endianness Distinction**
-> Standard Bitcoin treats the hash as a little-endian number for comparison. Baseline treats the hash digest as a **big-endian** number. This prevents Bitcoin ASICs from solving Baseline blocks.
+> [!NOTE]
+> The proof-of-work comparison treats the hash as a little-endian number (same convention as Bitcoin).
 
 ## 3. Transactions
 
@@ -54,7 +53,7 @@ Only **P2PKH** (Pay to Public Key Hash) scripts are standard and relayed.
 
 ### Fees
 - **Min Relay Fee**: 5,000 liners per kB.
-- **Dust**: Outputs smaller than cost-to-spend are generally discouraged.
+- **Dust**: No explicit dust threshold beyond standardness + fee rate policy.
 
 ## 4. Monetary Policy
 

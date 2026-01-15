@@ -8,14 +8,14 @@ permalink: /docs/governance/
 
 Baseline Cash is a decentralized project. There is no CEO or central server. Governance happens through code and consensus.
 
-## Upgrade Process (BIPs)
+## Upgrade Process
 
-Significant changes follow the **Baseline Improvement Proposal (BIP)** process:
+Baseline ships a **version-bits signaling framework** for upgrades. Specific upgrades (bit, threshold, window, activation height/time) are defined in code when scheduled.
 
-1.  **Draft**: A proposal is written and shared for community discussion (GitHub/Discord).
+1.  **Draft**: A proposal is written and shared for community discussion.
 2.  **Code**: Once agreed upon, code is implemented and tested.
-3.  **Signaling**: Miners signal support for the upgrade using **Version Bits** in block headers.
-4.  **Activation**: If >95% of hashpower signals support, the upgrade locks in and activates automatically.
+3.  **Signaling**: Miners signal support using version bits in block headers.
+4.  **Activation**: When the configured threshold is met for the defined window, the upgrade locks in and activates.
 
 ## The Foundation
 
@@ -27,5 +27,4 @@ There is a consensus-coded **Dev Fund** (1% of block rewards).
 ## For Operators
 
 As a node operator, you vote with your version.
-- **Stay Updated**: Run the latest stable release.
-- **Check Logs**: Your node will warn you if the network initiates an upgrade you don't recognize.
+- **Stay Updated**: Run the latest stable release when upgrades are announced.

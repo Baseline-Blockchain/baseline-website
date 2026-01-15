@@ -10,7 +10,7 @@ One of Baseline's unique features is that **every full node is a production-grad
 
 > [!IMPORTANT]
 > **Why run a pool?**
-> - Solo mine with 0% fees.
+> - Run a private pool with configurable fees.
 > - Let friends/family mine to your node.
 > - Improve network decentralization.
 
@@ -23,10 +23,10 @@ To turn your node into a pool, you just need to set a **payout key**.
     ```bash
     baseline-wallet generate-key
     ```
-    *Save the WIF (private key) securely!*
+    *Save the WIF or hex private key securely!*
 
 2.  **Update `config.json`**:
-    Add the hex key to the `mining` section.
+    Add the pool private key (hex, decimal, or WIF) to the `mining` section.
 
     ```json
     {
@@ -39,7 +39,7 @@ To turn your node into a pool, you just need to set a **payout key**.
     ```
 
 3.  **Restart Node**:
-    The node will now listen on port `3333` (Stratum).
+    The node will now listen on port `3333` (Stratum by default, configurable via `stratum.port`).
 
 ## Configuration Reference
 
@@ -47,13 +47,13 @@ To turn your node into a pool, you just need to set a **payout key**.
 |---------|---------|-------------|
 | `pool_private_key` | `null` | The key used to sign payout transactions. **Required** to enable Stratum. |
 | `pool_fee_percent` | `1.0` | The % cut you take from block rewards before sharing with workers. |
-| `min_payout` | `100000000` | Minimum balance (in liners) a worker needs before getting paid. (100M liners = 1 BLINE) |
+| `min_payout` | `50000000` | Minimum balance (in liners) a worker needs before getting paid. (50M liners = 0.5 BLINE) |
 
 ## How Payouts Work
 
 The node handles everything automatically:
 
-1.  **Tracking**: As miners submit shares, the node tracks their contribution in a local database (`data/payouts/ledger.json`).
+1.  **Tracking**: As miners submit shares, the node tracks their contribution in a local database (`data_dir/payouts/ledger.json`).
 2.  **Maturity**: When a block is found, the reward is locked for **20 blocks**.
 3.  **Distribution**: Once matured, the node creates a transaction paying all eligible workers their share (minus your pool fee).
 4.  **Broadcasting**: The payout transaction is sent to the network automatically.
