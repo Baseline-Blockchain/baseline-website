@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RPC API - Baseline Cash Docs</title>
+    <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css?v=33324">
+    <link rel="stylesheet" href="/assets/docs.css?v=332344">
+</head>
+
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-nav-toggle d-lg-none">
+        <a href="/" class="brand">
+            <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+            <span class="brand-text">Baseline Docs</span>
+        </a>
+        <button id="docs-menu-btn" class="button ghost" style="padding: 0.4rem;" aria-label="Menu">
+            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-sidebar">
+            <button id="docs-menu-close" class="docs-sidebar-close button ghost" style="padding: 0.4rem;"
+                aria-label="Close Menu">
+                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+            </button>
+            <a href="/docs/introduction/" class="docs-brand">
+                <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+                <span>Baseline Docs</span>
+            </a>
+
+            <nav class="docs-nav">
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Start</div>
+                    <a href="/docs/introduction/"
+                        class="docs-nav-link ">Introduction</a>
+                    <a href="/docs/coin/"
+                        class="docs-nav-link ">Coin Info</a>
+                    <a href="/docs/wallet/"
+                        class="docs-nav-link ">Wallet Guide</a>
+                    <a href="/docs/mining/"
+                        class="docs-nav-link ">Mining Guide</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Operators</div>
+                    <a href="/docs/node/" class="docs-nav-link ">Run
+                        a Node</a>
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
+                        a Pool</a>
+                    <a href="/docs/params/"
+                        class="docs-nav-link ">Network Params</a>
+                    <a href="/docs/exchange/"
+                        class="docs-nav-link ">Exchange
+                        Integration</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Reference</div>
+                    <a href="/docs/explorer/"
+                        class="docs-nav-link ">Block
+                        Explorer</a>
+                    <a href="/docs/rpc/" class="docs-nav-link active">RPC
+                        API</a>
+                    <a href="/docs/spec/"
+                        class="docs-nav-link ">Protocol Spec</a>
+                    <a href="/docs/networking/"
+                        class="docs-nav-link ">Networking</a>
+                    <a href="/docs/governance/"
+                        class="docs-nav-link ">Governance</a>
+                </div>
+            </nav>
+
+            <div style="margin-top: auto;">
+                <a href="/" class="button ghost" style="width: 100%; justify-content: start;">
+                    <i class="bi bi-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </aside>
+
+        <main class="docs-main">
+            <article class="docs-content">
+                <h1>RPC API</h1>
+                <p>The Baseline node exposes an HTTP JSON-RPC API for programmatic access. It is largely compatible with Bitcoin Core, with additions for the built-in pool and address index.</p>
+
+<h2 id="connection">Connection</h2>
+
+<ul>
+  <li><strong>URL</strong>: <code class="language-plaintext highlighter-rouge">http://127.0.0.1:8832</code></li>
+  <li><strong>Auth</strong>: Basic Auth (Username/Password from <code class="language-plaintext highlighter-rouge">config.json</code>).</li>
+  <li><strong>Content-Type</strong>: <code class="language-plaintext highlighter-rouge">application/json</code></li>
+</ul>
+
+<p><strong>Example Request:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">--user</span> rpcuser:rpcpass <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"method": "getblockchaininfo", "params": []}'</span> <span class="se">\</span>
+  http://127.0.0.1:8832
+</code></pre></div></div>
+
+<h2 id="blockchain-methods">Blockchain Methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getblockchaininfo</code></td>
+      <td>General chain state (height, difficulty, verification progress).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getblock &lt;hash&gt;</code></td>
+      <td>Get full block details.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getblockhash &lt;height&gt;</code></td>
+      <td>Get hash for a specific height.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getrawtransaction &lt;txid&gt;</code></td>
+      <td>Get transaction details.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getmempoolinfo</code></td>
+      <td>Current transaction memory pool status.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="address-index-built-in">Address Index (Built-in)</h2>
+
+<p>Baseline includes a native address index. You do <em>not</em> need an external indexer.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getaddressbalance</code></td>
+      <td>Balance for an address (<code class="language-plaintext highlighter-rouge">{"addresses": ["..."]}</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getaddressutxos</code></td>
+      <td>List unspent outputs for an address.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getaddresstxids</code></td>
+      <td>List transaction IDs involving an address.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wallet-methods">Wallet Methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getnewaddress</code></td>
+      <td>Generate a new receiving address.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sendtoaddress</code></td>
+      <td>Send funds: <code class="language-plaintext highlighter-rouge">sendtoaddress &lt;addr&gt; &lt;amount&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">listtransactions</code></td>
+      <td>Recent history.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getbalance</code></td>
+      <td>Current wallet balance.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pool--mining-methods">Pool &amp; Mining Methods</h2>
+
+<p>Unique to Baseline, these methods control the built-in Stratum server.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getpoolstats</code></td>
+      <td>Hashrate, fees, and payout configuration.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getpoolworkers</code></td>
+      <td>List connected workers and their hashrates.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getpoolpendingblocks</code></td>
+      <td>Blocks mined by your pool waiting for maturity.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getpoolmatured</code></td>
+      <td>Matured blocks ready for payout.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[!WARNING]
+<strong>Security Warning</strong>
+Never expose the RPC port (<code class="language-plaintext highlighter-rouge">8832</code>) to the public internet. It grants full control over the node and wallet. Use an SSH tunnel or reverse proxy if remote access is needed.</p>
+</blockquote>
+
+            </article>
+
+            <footer
+                style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;">
+                <p>Found a typo? <a href="https://github.com/Baseline-Blockchain/baseline-website" target="_blank"
+                        class="inline-link">Edit this page on GitHub</a>.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Simple mobile toggle
+        const btn = document.getElementById('docs-menu-btn');
+        const sidebar = document.getElementById('docs-sidebar');
+        const closeBtn = document.getElementById('docs-menu-close');
+
+        function closeMenu() {
+            sidebar.classList.remove('active');
+            sidebar.style.display = '';
+            sidebar.style.background = '';
+        }
+
+        function openMenu() {
+            sidebar.classList.add('active');
+            sidebar.style.display = 'flex';
+            sidebar.style.background = '#0c0e14';
+        }
+
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (sidebar.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.docs-nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // GitHub-style Alerts
+        document.querySelectorAll('blockquote').forEach(bq => {
+            const firstP = bq.querySelector('p');
+            if (!firstP) return;
+
+            const text = firstP.innerHTML;
+            const alertMatch = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);
+
+            if (alertMatch) {
+                const type = alertMatch[1].toLowerCase();
+                bq.classList.add('callout', `callout-${type}`);
+                // Remove the [!TYPE] marker
+                firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
+
+                // Add icon/title if needed, or just let CSS handle the styling
+                // We'll rely on docs.css .callout-* classes
+            }
+        });
+    </script>
+</body>
+
+</html>

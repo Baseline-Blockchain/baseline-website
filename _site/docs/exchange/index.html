@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Exchange Integration - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link ">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link ">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link ">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link ">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link active">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link ">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,57 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Exchange Integration</h1>
+                <p>Baseline Cash is designed for easy integration. While it is a <strong>Python implementation</strong> (not a Bitcoin Core fork), its RPC and transaction model align with Bitcoin Core standards for compatibility.</p>
+
+<h2 id="integration-checklist">Integration Checklist</h2>
+
+<h3 id="1-node-setup">1. Node Setup</h3>
+<ul>
+  <li><strong>Binary</strong>: Run <code class="language-plaintext highlighter-rouge">baseline-node</code> (Python 3.12+).</li>
+  <li><strong>Config</strong>: Set a secure <code class="language-plaintext highlighter-rouge">rpc.username</code>/<code class="language-plaintext highlighter-rouge">rpc.password</code>.</li>
+  <li><strong>Index</strong>: The <code class="language-plaintext highlighter-rouge">addressindex</code> is on by default—useful for deposit tracking.</li>
+</ul>
+
+<h3 id="2-deposit-architecture">2. Deposit Architecture</h3>
+<p>Baseline supports standard <strong>P2PKH</strong> addresses (starting with <code class="language-plaintext highlighter-rouge">N</code>).</p>
+
+<ol>
+  <li><strong>Generate Address</strong>: <code class="language-plaintext highlighter-rouge">getnewaddress "user_123"</code></li>
+  <li><strong>Monitor</strong>: Poll <code class="language-plaintext highlighter-rouge">getaddressutxos</code> or <code class="language-plaintext highlighter-rouge">listtransactions</code>.</li>
+  <li><strong>Confirmations</strong>: Wait for <strong>20 confirmations</strong> (same as coinbase maturity) for finality.</li>
+</ol>
+
+<h3 id="3-withdrawal-architecture">3. Withdrawal Architecture</h3>
+
+<ol>
+  <li><strong>Send</strong>: Use <code class="language-plaintext highlighter-rouge">sendtoaddress &lt;dest&gt; &lt;amount&gt;</code>.</li>
+  <li><strong>Fees</strong>: Automatic fee estimation is usually sufficient.</li>
+  <li><strong>Mempool</strong>: Baseline blocks are 20 seconds, so transactions clear quickly.</li>
+</ol>
+
+<h2 id="differences-from-bitcoin">Differences from Bitcoin</h2>
+
+<p>While mostly compatible, note these differences:</p>
+<ol>
+  <li><strong>Codebase</strong>: Pure Python. Installing <code class="language-plaintext highlighter-rouge">baseline-node</code> via pip (or running it from source) is the standard way to run a node.</li>
+  <li><strong>Block Time</strong>: 20 Seconds (vs 10 mins).</li>
+  <li><strong>Units</strong>: 1 BLINE = 100,000,000 Liners (same ratio as BTC/Sats).</li>
+  <li><strong>Address Prefix</strong>: Mainnet addresses start with <code class="language-plaintext highlighter-rouge">N</code> (version <code class="language-plaintext highlighter-rouge">0x35</code>).</li>
+</ol>
+
+<h2 id="docker-example">Docker Example</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="na">baseline</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">baseline-node</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">./data:/root/.baseline</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8832:8832"</span>  <span class="c1"># RPC (Protect this!)</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">9333:9333"</span>  <span class="c1"># P2P</span>
+</code></pre></div></div>
+
             </article>
 
             <footer

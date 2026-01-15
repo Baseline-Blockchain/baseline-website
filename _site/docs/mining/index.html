@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mining Guide - Baseline Cash Docs</title>
+    <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css?v=33324">
+    <link rel="stylesheet" href="/assets/docs.css?v=332344">
+</head>
+
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-nav-toggle d-lg-none">
+        <a href="/" class="brand">
+            <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+            <span class="brand-text">Baseline Docs</span>
+        </a>
+        <button id="docs-menu-btn" class="button ghost" style="padding: 0.4rem;" aria-label="Menu">
+            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-sidebar">
+            <button id="docs-menu-close" class="docs-sidebar-close button ghost" style="padding: 0.4rem;"
+                aria-label="Close Menu">
+                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+            </button>
+            <a href="/docs/introduction/" class="docs-brand">
+                <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+                <span>Baseline Docs</span>
+            </a>
+
+            <nav class="docs-nav">
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Start</div>
+                    <a href="/docs/introduction/"
+                        class="docs-nav-link ">Introduction</a>
+                    <a href="/docs/coin/"
+                        class="docs-nav-link ">Coin Info</a>
+                    <a href="/docs/wallet/"
+                        class="docs-nav-link ">Wallet Guide</a>
+                    <a href="/docs/mining/"
+                        class="docs-nav-link active">Mining Guide</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Operators</div>
+                    <a href="/docs/node/" class="docs-nav-link ">Run
+                        a Node</a>
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
+                        a Pool</a>
+                    <a href="/docs/params/"
+                        class="docs-nav-link ">Network Params</a>
+                    <a href="/docs/exchange/"
+                        class="docs-nav-link ">Exchange
+                        Integration</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Reference</div>
+                    <a href="/docs/explorer/"
+                        class="docs-nav-link ">Block
+                        Explorer</a>
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
+                        API</a>
+                    <a href="/docs/spec/"
+                        class="docs-nav-link ">Protocol Spec</a>
+                    <a href="/docs/networking/"
+                        class="docs-nav-link ">Networking</a>
+                    <a href="/docs/governance/"
+                        class="docs-nav-link ">Governance</a>
+                </div>
+            </nav>
+
+            <div style="margin-top: auto;">
+                <a href="/" class="button ghost" style="width: 100%; justify-content: start;">
+                    <i class="bi bi-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </aside>
+
+        <main class="docs-main">
+            <article class="docs-content">
+                <h1>Mining Guide</h1>
+                <p>Baseline Cash is designed to be mined with consumer hardware (CPUs and GPUs). It implements a modified version of the SHA256d proof-of-work protocol:</p>
+
+<blockquote>
+  <p>[!TIP]
+<strong>No ASICs?</strong>
+Standard Bitcoin ASICs fail because Baseline forces <strong>Big-Endian byte order</strong> for the <code class="language-plaintext highlighter-rouge">prev_hash</code> and <code class="language-plaintext highlighter-rouge">merkle_root</code> fields.</p>
+  <ul>
+    <li>Bitcoin: Little-Endian</li>
+    <li>Baseline: Big-Endian
+This simple protocol change invalidates existing ASIC hardware.</li>
+  </ul>
+</blockquote>
+
+<h2 id="1-get-a-miner">1. Get a Miner</h2>
+
+<p>The reference miner is Python-based (open source).</p>
+
+<ol>
+  <li><strong>Clone the Repository</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Baseline-Blockchain/baseline-miner.git
+<span class="nb">cd </span>baseline-miner
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Install</strong>:
+It is recommended to use a virtual environment:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> venv .venv
+    
+<span class="c"># Windows</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+    
+<span class="c"># Linux / macOS</span>
+<span class="nb">source</span> .venv/bin/activate
+    
+<span class="c"># Install</span>
+pip <span class="nb">install</span> <span class="nt">-e</span> <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="2-connect-to-a-pool">2. Connect to a Pool</h2>
+
+<p>Most users should mine to a public pool for steady rewards.</p>
+
+<h3 id="command-line">Command Line</h3>
+<p>Run the miner pointing to a pool’s address. You need a <strong>Baseline Address</strong> to receive rewards.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseline-miner <span class="nt">--gpu</span> <span class="se">\</span>
+  <span class="nt">--host</span> pool.baseline.cash <span class="nt">--port</span> 3333 <span class="se">\</span>
+  <span class="nt">--address</span> YOUR_ADDRESS_HERE <span class="se">\</span>
+  <span class="nt">--worker</span> my-gaming-pc
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--gpu</code></td>
+      <td>Enable GPU mining (fastest). Omit for CPU only.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--host</code></td>
+      <td>The domain or IP of the mining pool.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--port</code></td>
+      <td>Usually 3333.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--address</code></td>
+      <td><strong>Required</strong>. Your BLINE address where payouts go.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--worker</code></td>
+      <td>Optional name to track this specific machine.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="3-solo-mining">3. Solo Mining</h2>
+
+<p>If you want to mine directly to your own node (and keep 100% of the block reward), you can run a local pool.</p>
+
+<ol>
+  <li>
+    <p><strong>Configure your node</strong>:
+Set a <code class="language-plaintext highlighter-rouge">mining.pool_private_key</code> in your node’s <code class="language-plaintext highlighter-rouge">config.json</code>. This enables the internal Stratum server.
+<em>(See <a href="/docs/pool/">Run a Pool</a> for details)</em>.</p>
+  </li>
+  <li>
+    <p><strong>Point your miner locally</strong>:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseline-miner <span class="nt">--gpu</span> <span class="se">\</span>
+  <span class="nt">--host</span> 127.0.0.1 <span class="nt">--port</span> 3333 <span class="se">\</span>
+  <span class="nt">--address</span> YOUR_ADDRESS_HERE <span class="se">\</span>
+  <span class="nt">--worker</span> local-worker
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="faq">FAQ</h2>
+
+<p><strong>What hardware is best?</strong>
+Modern Nvidia and AMD GPUs perform best. High-core-count CPUs (Ryzen / Threadripper) are also effective.</p>
+
+<p><strong>Can I dual mine?</strong>
+Yes, the miner is lightweight. However, GPU mining will use significant power.</p>
+
+<p><strong>How often are blocks found?</strong>
+The network targets a block every <strong>20 seconds</strong>. This is 30x faster than Bitcoin, so finding blocks (and variance) happens much quicker.</p>
+
+            </article>
+
+            <footer
+                style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;">
+                <p>Found a typo? <a href="https://github.com/Baseline-Blockchain/baseline-website" target="_blank"
+                        class="inline-link">Edit this page on GitHub</a>.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Simple mobile toggle
+        const btn = document.getElementById('docs-menu-btn');
+        const sidebar = document.getElementById('docs-sidebar');
+        const closeBtn = document.getElementById('docs-menu-close');
+
+        function closeMenu() {
+            sidebar.classList.remove('active');
+            sidebar.style.display = '';
+            sidebar.style.background = '';
+        }
+
+        function openMenu() {
+            sidebar.classList.add('active');
+            sidebar.style.display = 'flex';
+            sidebar.style.background = '#0c0e14';
+        }
+
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (sidebar.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.docs-nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // GitHub-style Alerts
+        document.querySelectorAll('blockquote').forEach(bq => {
+            const firstP = bq.querySelector('p');
+            if (!firstP) return;
+
+            const text = firstP.innerHTML;
+            const alertMatch = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);
+
+            if (alertMatch) {
+                const type = alertMatch[1].toLowerCase();
+                bq.classList.add('callout', `callout-${type}`);
+                // Remove the [!TYPE] marker
+                firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
+
+                // Add icon/title if needed, or just let CSS handle the styling
+                // We'll rely on docs.css .callout-* classes
+            }
+        });
+    </script>
+</body>
+
+</html>

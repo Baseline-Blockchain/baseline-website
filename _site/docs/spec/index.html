@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Protocol Specification - Baseline Cash Docs</title>
+    <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css?v=33324">
+    <link rel="stylesheet" href="/assets/docs.css?v=332344">
+</head>
+
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-nav-toggle d-lg-none">
+        <a href="/" class="brand">
+            <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+            <span class="brand-text">Baseline Docs</span>
+        </a>
+        <button id="docs-menu-btn" class="button ghost" style="padding: 0.4rem;" aria-label="Menu">
+            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-sidebar">
+            <button id="docs-menu-close" class="docs-sidebar-close button ghost" style="padding: 0.4rem;"
+                aria-label="Close Menu">
+                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+            </button>
+            <a href="/docs/introduction/" class="docs-brand">
+                <img src="/assets/logo.png" alt="Baseline Cash" width="32" height="32">
+                <span>Baseline Docs</span>
+            </a>
+
+            <nav class="docs-nav">
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Start</div>
+                    <a href="/docs/introduction/"
+                        class="docs-nav-link ">Introduction</a>
+                    <a href="/docs/coin/"
+                        class="docs-nav-link ">Coin Info</a>
+                    <a href="/docs/wallet/"
+                        class="docs-nav-link ">Wallet Guide</a>
+                    <a href="/docs/mining/"
+                        class="docs-nav-link ">Mining Guide</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Operators</div>
+                    <a href="/docs/node/" class="docs-nav-link ">Run
+                        a Node</a>
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
+                        a Pool</a>
+                    <a href="/docs/params/"
+                        class="docs-nav-link ">Network Params</a>
+                    <a href="/docs/exchange/"
+                        class="docs-nav-link ">Exchange
+                        Integration</a>
+                </div>
+
+                <div class="docs-nav-group">
+                    <div class="docs-nav-title">Reference</div>
+                    <a href="/docs/explorer/"
+                        class="docs-nav-link ">Block
+                        Explorer</a>
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
+                        API</a>
+                    <a href="/docs/spec/"
+                        class="docs-nav-link active">Protocol Spec</a>
+                    <a href="/docs/networking/"
+                        class="docs-nav-link ">Networking</a>
+                    <a href="/docs/governance/"
+                        class="docs-nav-link ">Governance</a>
+                </div>
+            </nav>
+
+            <div style="margin-top: auto;">
+                <a href="/" class="button ghost" style="width: 100%; justify-content: start;">
+                    <i class="bi bi-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </aside>
+
+        <main class="docs-main">
+            <article class="docs-content">
+                <h1>Protocol Specification</h1>
+                <p>This document defines the consensus rules and data structures for Baseline Cash.</p>
+
+<h2 id="1-core-constants">1. Core Constants</h2>
+
+<p>Baseline Cash is a <strong>Python-based implementation</strong> of a Bitcoin-like protocol, optimized for a modern payments network. It is not a fork of Bitcoin Core.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hashing Algorithm</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">SHA256d</code> (Modified)</td>
+      <td>Double SHA-256 (Incompatible with BTC ASICs).</td>
+    </tr>
+    <tr>
+      <td><strong>Byte Order</strong></td>
+      <td><strong>Big-Endian</strong></td>
+      <td>Headers use Big-Endian digest bytes (breaks BTC ASICs).</td>
+    </tr>
+    <tr>
+      <td><strong>Block Time</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">20 seconds</code></td>
+      <td>Target interval between blocks.</td>
+    </tr>
+    <tr>
+      <td><strong>Difficulty Algo</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">LWMA-60</code></td>
+      <td>Linearly Weighted Moving Average (60 blocks).</td>
+    </tr>
+    <tr>
+      <td><strong>Max Supply</strong></td>
+      <td><strong>300,000,000</strong></td>
+      <td>Hardcoded <code class="language-plaintext highlighter-rouge">MAX_MONEY</code> (checked in <code class="language-plaintext highlighter-rouge">tx.serialize</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Port (P2P)</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">9333</code></td>
+      <td>Default P2P port.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="2-block-logic">2. Block Logic</h2>
+
+<p>Blocks link together to form the immutable ledger.</p>
+
+<h3 id="header-structure">Header Structure</h3>
+
+<p>The 80-byte header is similar to Bitcoin but validated differently.</p>
+
+<ul>
+  <li><strong>Version</strong> (<code class="language-plaintext highlighter-rouge">int32</code>): Upgrade tracking.</li>
+  <li><strong>Prev Hash</strong> (<code class="language-plaintext highlighter-rouge">32 bytes</code>): Hash of the previous block (Big-Endian).</li>
+  <li><strong>Merkle Root</strong> (<code class="language-plaintext highlighter-rouge">32 bytes</code>): Root of the transaction tree (Big-Endian).</li>
+  <li><strong>Timestamp</strong> (<code class="language-plaintext highlighter-rouge">uint32</code>): Unix timestamp.</li>
+  <li><strong>Bits</strong> (<code class="language-plaintext highlighter-rouge">uint32</code>): Compact difficulty target.</li>
+  <li><strong>Nonce</strong> (<code class="language-plaintext highlighter-rouge">uint32</code>): Random value for Proof-of-Work.</li>
+</ul>
+
+<h3 id="proof-of-work">Proof-of-Work</h3>
+<p>Miners must find a hash such that:
+<code class="language-plaintext highlighter-rouge">SHA256d(Header) &lt;= Target(Bits)</code></p>
+
+<blockquote>
+  <p>[!IMPORTANT]
+<strong>Endianness Distinction</strong>
+Standard Bitcoin treats the hash as a little-endian number for comparison. Baseline treats the hash digest as a <strong>big-endian</strong> number. This prevents Bitcoin ASICs from solving Baseline blocks.</p>
+</blockquote>
+
+<h2 id="3-transactions">3. Transactions</h2>
+
+<p>Baseline uses the UTXO (Unspent Transaction Output) model.</p>
+
+<h3 id="standard-scripts">Standard Scripts</h3>
+<p>Only <strong>P2PKH</strong> (Pay to Public Key Hash) scripts are standard and relayed.
+<code class="language-plaintext highlighter-rouge">OP_DUP OP_HASH160 &lt;PubKeyHash&gt; OP_EQUALVERIFY OP_CHECKSIG</code></p>
+
+<h3 id="fees">Fees</h3>
+<ul>
+  <li><strong>Min Relay Fee</strong>: 5,000 liners per kB.</li>
+  <li><strong>Dust</strong>: Outputs smaller than cost-to-spend are generally discouraged.</li>
+</ul>
+
+<h2 id="4-monetary-policy">4. Monetary Policy</h2>
+
+<h3 id="subsidy">Subsidy</h3>
+<ul>
+  <li><strong>Initial Reward</strong>: 50 BLINE per block.</li>
+  <li><strong>Decay</strong>: The reward decreases exponentially with a half-life of <strong>4,158,884 blocks</strong> (~2.64 years). This avoids the market-shock of sudden “halvings”.</li>
+</ul>
+
+<h3 id="dev-fund">Dev Fund</h3>
+<p><strong>1%</strong> of the block <em>subsidy</em> is directed to a foundation address to fund ongoing development. This is a consensus rule—blocks missing this output are invalid.</p>
+
+<h2 id="5-consensus-rules">5. Consensus Rules</h2>
+
+<ol>
+  <li><strong>Coinbase Maturity</strong>: Mined coins cannot be spent until they have <strong>20 confirmations</strong>.</li>
+  <li><strong>Locktime</strong>: Transactions can be locked until a specific block height or timestamp.</li>
+  <li><strong>Mempool</strong>: Only standard transactions are accepted.</li>
+</ol>
+
+            </article>
+
+            <footer
+                style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;">
+                <p>Found a typo? <a href="https://github.com/Baseline-Blockchain/baseline-website" target="_blank"
+                        class="inline-link">Edit this page on GitHub</a>.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Simple mobile toggle
+        const btn = document.getElementById('docs-menu-btn');
+        const sidebar = document.getElementById('docs-sidebar');
+        const closeBtn = document.getElementById('docs-menu-close');
+
+        function closeMenu() {
+            sidebar.classList.remove('active');
+            sidebar.style.display = '';
+            sidebar.style.background = '';
+        }
+
+        function openMenu() {
+            sidebar.classList.add('active');
+            sidebar.style.display = 'flex';
+            sidebar.style.background = '#0c0e14';
+        }
+
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (sidebar.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.docs-nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // GitHub-style Alerts
+        document.querySelectorAll('blockquote').forEach(bq => {
+            const firstP = bq.querySelector('p');
+            if (!firstP) return;
+
+            const text = firstP.innerHTML;
+            const alertMatch = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);
+
+            if (alertMatch) {
+                const type = alertMatch[1].toLowerCase();
+                bq.classList.add('callout', `callout-${type}`);
+                // Remove the [!TYPE] marker
+                firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
+
+                // Add icon/title if needed, or just let CSS handle the styling
+                // We'll rely on docs.css .callout-* classes
+            }
+        });
+    </script>
+</body>
+
+</html>

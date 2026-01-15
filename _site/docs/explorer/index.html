@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Block Explorer - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link ">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link ">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link ">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link ">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link ">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link active">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,35 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Block Explorer</h1>
+                <p>The Baseline Block Explorer allows you to search the blockchain for transactions, blocks, and addresses.</p>
+
+<p><strong><a href="https://explorer.baseline.cash">Launch Explorer</a></strong></p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><strong>Search</strong>: Find transactions by ID, blocks by height/hash, or addresses.</li>
+  <li><strong>Rich List</strong>: View the top holding addresses.</li>
+  <li><strong>Mempool</strong>: See unconfirmed transactions waiting to be mined.</li>
+</ul>
+
+<h2 id="api">API</h2>
+
+<p>The explorer is built on top of the standard Baseline RPC. You don’t need a special API key; you can run your own node and query it directly using the <a href="/docs/rpc/">JSON-RPC</a> methods.</p>
+
+<h3 id="common-queries">Common Queries</h3>
+<ul>
+  <li>Check balance: <code class="language-plaintext highlighter-rouge">getaddressbalance</code></li>
+  <li>Check history: <code class="language-plaintext highlighter-rouge">getaddresstxids</code></li>
+</ul>
+
+<blockquote>
+  <p>[!TIP]
+<strong>Run your own</strong>
+The explorer is fully open source. You can run a local version against your own node.</p>
+</blockquote>
+
             </article>
 
             <footer

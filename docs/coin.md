@@ -14,7 +14,7 @@ Baseline Cash is a decentralized digital currency designed for fair distribution
 |----------|-------|
 | **Ticker** | `BLINE` |
 | **Consensus** | Modified SHA256d |
-| **Max Supply** | **300,000,000 BLINE** | Hardcoded limit (`MAX_MONEY`). |
+| **Max Supply** | **300,000,000 BLINE**. Hardcoded limit (`MAX_MONEY`). |
 | **Block Time** | 20 Seconds |
 | **Premine** | 0 BLINE (Fair Launch) |
 | **Decimals** | 8 |

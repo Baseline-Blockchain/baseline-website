@@ -77,11 +77,9 @@ baseline-node --config config.json
 
 The node will initialize the blockchain database (Chainstate) and begin syncing.
 
-### Checking Status
 
-> [!TIP]
-> **Mining Support**
-> Every Baseline node is also a mining pool! If you want to mine, see the [Pool Guide](/docs/pool/).
+
+
 
 ## SystemD (Linux Service)
 

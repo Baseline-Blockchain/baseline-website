@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Baseline Cash (BLINE) - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link ">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link active">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link ">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link ">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link ">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link ">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,108 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Baseline Cash (BLINE)</h1>
+                <p>Baseline Cash is a decentralized digital currency designed for fair distribution and reliable payments. It is a <strong>clean-room Python implementation</strong> of a Bitcoin-like protocol, optimized for consumer hardware.</p>
+
+<h2 id="quick-facts">Quick Facts</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ticker</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">BLINE</code></td>
+    </tr>
+    <tr>
+      <td><strong>Consensus</strong></td>
+      <td>Modified SHA256d</td>
+    </tr>
+    <tr>
+      <td><strong>Max Supply</strong></td>
+      <td><strong>300,000,000 BLINE</strong>. Hardcoded limit (<code class="language-plaintext highlighter-rouge">MAX_MONEY</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Block Time</strong></td>
+      <td>20 Seconds</td>
+    </tr>
+    <tr>
+      <td><strong>Premine</strong></td>
+      <td>0 BLINE (Fair Launch)</td>
+    </tr>
+    <tr>
+      <td><strong>Decimals</strong></td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="emission-schedule">Emission Schedule</h2>
+
+<p>Baseline uses a continuous emission model rather than sudden “halvings”. This ensures a smooth reduction in inflation and consistent security/incentives for miners.</p>
+
+<ul>
+  <li><strong>Initial Reward</strong>: 50 BLINE per block.</li>
+  <li><strong>Half-Life</strong>: 4,158,884 blocks (~2.64 years).</li>
+  <li><strong>Formula</strong>: Rewards decay smoothly every block on an exponential curve.</li>
+</ul>
+
+<p><img src="/assets/supply_curve.png" alt="Baseline Cash Supply Curve" /></p>
+
+<h3 id="supply-cap">Supply Cap</h3>
+<p>The supply is capped at exactly <strong>300,000,000 BLINE</strong> (defined as <code class="language-plaintext highlighter-rouge">MAX_MONEY</code> in <code class="language-plaintext highlighter-rouge">core/tx.py</code>). The emission curve is asymptotic to this value.</p>
+
+<h2 id="technical-specifications">Technical Specifications</h2>
+
+<h3 id="no-asics">No ASICs</h3>
+<p>Baseline forces a <strong>Big-Endian byte order</strong> for block header hashes (<code class="language-plaintext highlighter-rouge">prev_hash</code> and <code class="language-plaintext highlighter-rouge">merkle_root</code>).</p>
+<ul>
+  <li><strong>Bitcoin ASICs</strong>: Hardcoded to Little-Endian. They produce invalid hashes on Baseline.</li>
+  <li><strong>Result</strong>: You can mine effectively with CPUs and GPUs.</li>
+</ul>
+
+<h3 id="difficulty-adjustment">Difficulty Adjustment</h3>
+<p>We use <strong>LWMA (Linear Weighted Moving Average)</strong> over a 60-block window.</p>
+<ul>
+  <li><strong>Why?</strong> It responds rapidly to hashrate changes. If a large miner joins or leaves, the difficulty adjusts within minutes, keeping block times stable at 20 seconds.</li>
+</ul>
+
+<h3 id="units">Units</h3>
+<p>The smallest unit is a <strong>Liner</strong>.</p>
+<ul>
+  <li>1 BLINE = 100,000,000 Liners.</li>
+  <li>1 Liner = 0.00000001 BLINE.</li>
+</ul>
+
+<h2 id="ports">Ports</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Mainnet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P2P</td>
+      <td>9333</td>
+    </tr>
+    <tr>
+      <td>RPC</td>
+      <td>8832</td>
+    </tr>
+    <tr>
+      <td>Stratum</td>
+      <td>3333</td>
+    </tr>
+  </tbody>
+</table>
+
             </article>
 
             <footer

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Wallet Guide - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link ">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link ">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link active">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link ">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link ">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link ">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,53 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Wallet Guide</h1>
+                <p>Baseline Cash offers two ways to manage your funds: the <strong>Light Wallet</strong> for most users, and the <strong>Node Wallet</strong> for power users.</p>
+
+<h2 id="1-light-wallet-recommended">1. Light Wallet (Recommended)</h2>
+
+<p>The Light Wallet is a standalone desktop application. It does not require downloading the blockchain.</p>
+
+<ul>
+  <li><strong>Best for</strong>: Daily use, non-technical users.</li>
+  <li><strong>Platform</strong>: Windows, macOS, Linux.</li>
+  <li><strong>Download</strong>: <a href="https://github.com/Baseline-Blockchain/baseline-light/releases/latest">Latest Release</a></li>
+</ul>
+
+<h3 id="features">Features</h3>
+<ul>
+  <li>Instant setup (no sync required).</li>
+  <li>Connects to public nodes (or your own).</li>
+</ul>
+
+<h2 id="2-node-wallet">2. Node Wallet</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">baseline-node</code> software includes a built-in “full” wallet. It is accessed via the command line (CLI) or JSON-RPC.</p>
+
+<ul>
+  <li><strong>Best for</strong>: Developers, Exhanges, Mining Pools.</li>
+  <li><strong>Platform</strong>: Command Line / Server.</li>
+</ul>
+
+<h3 id="usage">Usage</h3>
+<p>The node wallet is controlled via the <code class="language-plaintext highlighter-rouge">baseline-wallet</code> CLI tool or RPC commands.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Generate a new address</span>
+baseline-wallet getnewaddress
+
+<span class="c"># Send funds</span>
+baseline-wallet sendtoaddress &lt;address&gt; &lt;amount&gt;
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!IMPORTANT]
+<strong>Backup Warning</strong></p>
+  <ul>
+    <li><strong>Light Wallet</strong>: Write down your 12-word seed phrase.</li>
+    <li><strong>Node Wallet</strong>: Backup your <code class="language-plaintext highlighter-rouge">wallet.json</code> or export your private keys (<code class="language-plaintext highlighter-rouge">dumpwallet</code>).</li>
+  </ul>
+</blockquote>
+
             </article>
 
             <footer

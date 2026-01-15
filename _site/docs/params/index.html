@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Network Parameters - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link ">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link ">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link ">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link active">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link ">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link ">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,93 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Network Parameters</h1>
+                <p>Baseline Cash (BLINE) uses a set of consensus constants designed for speed and fair distribution.</p>
+
+<h2 id="general">General</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Block Time</strong></td>
+      <td>20 Seconds</td>
+      <td>~4,320 blocks per day.</td>
+    </tr>
+    <tr>
+      <td><strong>Algorithm</strong></td>
+      <td>Modified SHA256d</td>
+      <td>Incompatible with Bitcoin ASICs.</td>
+    </tr>
+    <tr>
+      <td><strong>Difficulty</strong></td>
+      <td>LWMA-based</td>
+      <td>Adjusts every block based on recent history.</td>
+    </tr>
+    <tr>
+      <td><strong>Max Supply</strong></td>
+      <td><strong>300,000,000</strong></td>
+      <td>Strict limit (<code class="language-plaintext highlighter-rouge">MAX_MONEY</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ports">Ports</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Mainnet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>P2P</strong></td>
+      <td>9333</td>
+    </tr>
+    <tr>
+      <td><strong>RPC</strong></td>
+      <td>8832</td>
+    </tr>
+    <tr>
+      <td><strong>Stratum</strong></td>
+      <td>3333</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="emission-schedule">Emission Schedule</h2>
+
+<p>Block rewards decrease smoothly over time using an exponential decay formula, rather than sudden “halving” cliffs.</p>
+
+<ul>
+  <li><strong>Initial Reward</strong>: 50 BLINE</li>
+  <li><strong>Decay Factor</strong>: Reduced continuously.</li>
+  <li><strong>Half-Life</strong>: 4,158,884 blocks (~2.64 years).</li>
+</ul>
+
+<h2 id="consensus-rules">Consensus Rules</h2>
+
+<ol>
+  <li><strong>Dev Fund</strong>: 1% of the <strong>subsidy</strong> (not fees) is sent to the foundation address.</li>
+  <li><strong>Maturity</strong>: Coinbase rewards are spendable after <strong>20 confirmations</strong>.</li>
+  <li><strong>Fees</strong>: Minimum relay fee of 5,000 liners per kB.</li>
+</ol>
+
+<blockquote>
+  <p>[!NOTE]
+<strong>Liners?</strong>
+A “Liner” is the smallest unit of Baseline Cash.
+1 BLINE = 100,000,000 Liners.</p>
+</blockquote>
+
             </article>
 
             <footer

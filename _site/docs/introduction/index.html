@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} - Baseline Cash Docs</title>
+    <title>Introduction - Baseline Cash Docs</title>
     <meta name="description" content="Documentation for Baseline Cash - Open Payment Network">
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/bootstrap-icons/bootstrap-icons.css">
@@ -40,41 +40,41 @@
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Start</div>
                     <a href="/docs/introduction/"
-                        class="docs-nav-link {% if page.url contains '/introduction/' %}active{% endif %}">Introduction</a>
+                        class="docs-nav-link active">Introduction</a>
                     <a href="/docs/coin/"
-                        class="docs-nav-link {% if page.url contains '/coin/' %}active{% endif %}">Coin Info</a>
+                        class="docs-nav-link ">Coin Info</a>
                     <a href="/docs/wallet/"
-                        class="docs-nav-link {% if page.url contains '/wallet/' %}active{% endif %}">Wallet Guide</a>
+                        class="docs-nav-link ">Wallet Guide</a>
                     <a href="/docs/mining/"
-                        class="docs-nav-link {% if page.url contains '/mining/' %}active{% endif %}">Mining Guide</a>
+                        class="docs-nav-link ">Mining Guide</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Operators</div>
-                    <a href="/docs/node/" class="docs-nav-link {% if page.url contains '/node/' %}active{% endif %}">Run
+                    <a href="/docs/node/" class="docs-nav-link ">Run
                         a Node</a>
-                    <a href="/docs/pool/" class="docs-nav-link {% if page.url contains '/pool/' %}active{% endif %}">Run
+                    <a href="/docs/pool/" class="docs-nav-link ">Run
                         a Pool</a>
                     <a href="/docs/params/"
-                        class="docs-nav-link {% if page.url contains '/params/' %}active{% endif %}">Network Params</a>
+                        class="docs-nav-link ">Network Params</a>
                     <a href="/docs/exchange/"
-                        class="docs-nav-link {% if page.url contains '/exchange/' %}active{% endif %}">Exchange
+                        class="docs-nav-link ">Exchange
                         Integration</a>
                 </div>
 
                 <div class="docs-nav-group">
                     <div class="docs-nav-title">Reference</div>
                     <a href="/docs/explorer/"
-                        class="docs-nav-link {% if page.url contains '/explorer/' %}active{% endif %}">Block
+                        class="docs-nav-link ">Block
                         Explorer</a>
-                    <a href="/docs/rpc/" class="docs-nav-link {% if page.url contains '/rpc/' %}active{% endif %}">RPC
+                    <a href="/docs/rpc/" class="docs-nav-link ">RPC
                         API</a>
                     <a href="/docs/spec/"
-                        class="docs-nav-link {% if page.url contains '/spec/' %}active{% endif %}">Protocol Spec</a>
+                        class="docs-nav-link ">Protocol Spec</a>
                     <a href="/docs/networking/"
-                        class="docs-nav-link {% if page.url contains '/networking/' %}active{% endif %}">Networking</a>
+                        class="docs-nav-link ">Networking</a>
                     <a href="/docs/governance/"
-                        class="docs-nav-link {% if page.url contains '/governance/' %}active{% endif %}">Governance</a>
+                        class="docs-nav-link ">Governance</a>
                 </div>
             </nav>
 
@@ -87,8 +87,47 @@
 
         <main class="docs-main">
             <article class="docs-content">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
+                <h1>Introduction</h1>
+                <p>Baseline Cash is a straightforward, open payment network designed for simplicity and fairness. It strips away the complexity of modern “crypto platforms” to focus on one thing: <strong>moving value reliably</strong>.</p>
+
+<ul>
+  <li><strong>No ASICs</strong>: Mine with your existing CPU or GPU.</li>
+  <li><strong>No Gatekeepers</strong>: Anyone can run a node or a pool.</li>
+  <li><strong>No Signup</strong>: Just generate a wallet and go.</li>
+</ul>
+
+<h2 id="why-baseline">Why Baseline?</h2>
+
+<p>We built Baseline to return to the roots of peer-to-peer cash, but with modern operational improvements.</p>
+
+<h3 id="1-fair-mining-for-everyone">1. Fair Mining for Everyone</h3>
+<p>Unlike Bitcoin, where you need million-dollar warehouses of specialized hardware (ASICs) to compete, Baseline uses a modified proof-of-work algorithm. This means the gaming PC or workstation you already own is a first-class citizen on the network.</p>
+
+<h3 id="2-built-in-pools">2. Built-in Pools</h3>
+<p>Running a mining pool usually requires complex custom software. In Baseline, <strong>every node is a pool</strong>. You can spin up a node and let your friends mine to it immediately. Payouts are handled automatically by the protocol.</p>
+
+<h3 id="3-scheduled-payments">3. Scheduled Payments</h3>
+<p>Baseline supports <strong>verifiable future payments</strong>. You can lock funds to be sent at a specific future date. This is built directly into the chain, allowing you to set up trustless deferred transfers.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+  <a href="/docs/mining/" class="card card-link">
+    <h3><i class="bi bi-cpu icon"></i> Start Mining</h3>
+    <p>Use your GPU to earn BLINE. Setup takes about 5 minutes.</p>
+  </a>
+  
+  <a href="/docs/pool/" class="card card-link">
+    <h3><i class="bi bi-hdd-network icon"></i> Run a Node</h3>
+    <p>Validate the chain and host your own private mining pool.</p>
+  </a>
+
+  <a href="/docs/rpc/" class="card card-link">
+    <h3><i class="bi bi-code-slash icon"></i> Build</h3>
+    <p>Integrate Baseline into your app using the JSON-RPC API.</p>
+  </a>
+</div>
+
             </article>
 
             <footer
