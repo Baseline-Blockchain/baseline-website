@@ -192,15 +192,28 @@ body {
 }
 
 /* Tables matching Explorer tables */
-.docs-content table {
+/* Table Wrapper (injected by JS) */
+.table-wrapper {
     display: block;
     overflow-x: auto;
     width: 100%;
-    border-collapse: collapse;
     margin-bottom: 2rem;
     background: var(--panel);
     border-radius: 12px;
     border: 1px solid var(--border);
+}
+
+/* Tables matching Explorer tables */
+.docs-content table {
+    width: 100%;
+    min-width: 600px;
+    /* Force minimum width to ensure readability */
+    border-collapse: collapse;
+    margin: 0;
+    /* Margin handled by wrapper */
+    background: transparent;
+    border: none;
+    /* Border handled by wrapper */
 }
 
 .docs-content {

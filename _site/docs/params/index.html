@@ -95,31 +95,31 @@
 <table>
   <thead>
     <tr>
-      <th>Parameter</th>
-      <th>Value</th>
-      <th>Notes</th>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left">Value</th>
+      <th style="text-align: left">Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Block Time</strong></td>
-      <td>20 Seconds</td>
-      <td>~4,320 blocks per day.</td>
+      <td style="text-align: left"><strong>Block Time</strong></td>
+      <td style="text-align: left">20 Seconds</td>
+      <td style="text-align: left">~4,320 blocks per day.</td>
     </tr>
     <tr>
-      <td><strong>Algorithm</strong></td>
-      <td>Modified SHA256d</td>
-      <td>Incompatible with Bitcoin ASICs.</td>
+      <td style="text-align: left"><strong>Algorithm</strong></td>
+      <td style="text-align: left">Modified SHA256d</td>
+      <td style="text-align: left">Incompatible with Bitcoin ASICs.</td>
     </tr>
     <tr>
-      <td><strong>Difficulty</strong></td>
-      <td>LWMA-based</td>
-      <td>Adjusts every block based on recent history.</td>
+      <td style="text-align: left"><strong>Difficulty</strong></td>
+      <td style="text-align: left">LWMA-based</td>
+      <td style="text-align: left">Adjusts every block based on recent history.</td>
     </tr>
     <tr>
-      <td><strong>Max Supply</strong></td>
-      <td><strong>300,000,000</strong></td>
-      <td>Strict limit (<code class="language-plaintext highlighter-rouge">MAX_MONEY</code>).</td>
+      <td style="text-align: left"><strong>Max Supply</strong></td>
+      <td style="text-align: left"><strong>300,000,000</strong></td>
+      <td style="text-align: left">Strict limit (<code class="language-plaintext highlighter-rouge">MAX_MONEY</code>).</td>
     </tr>
   </tbody>
 </table>
@@ -234,10 +234,15 @@ A “Liner” is the smallest unit of Baseline Cash.
                 bq.classList.add('callout', `callout-${type}`);
                 // Remove the [!TYPE] marker
                 firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
-
-                // Add icon/title if needed, or just let CSS handle the styling
-                // We'll rely on docs.css .callout-* classes
             }
+        });
+
+        // Table Wrapper for Mobile Scrolling
+        document.querySelectorAll('.docs-content table').forEach(table => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-wrapper';
+            table.parentNode.insertBefore(wrapper, table);
+            wrapper.appendChild(table);
         });
     </script>
 </body>

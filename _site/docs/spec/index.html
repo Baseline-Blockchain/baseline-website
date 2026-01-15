@@ -256,10 +256,15 @@ Standard Bitcoin treats the hash as a little-endian number for comparison. Basel
                 bq.classList.add('callout', `callout-${type}`);
                 // Remove the [!TYPE] marker
                 firstP.innerHTML = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/, '').trim();
-
-                // Add icon/title if needed, or just let CSS handle the styling
-                // We'll rely on docs.css .callout-* classes
             }
+        });
+
+        // Table Wrapper for Mobile Scrolling
+        document.querySelectorAll('.docs-content table').forEach(table => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-wrapper';
+            table.parentNode.insertBefore(wrapper, table);
+            wrapper.appendChild(table);
         });
     </script>
 </body>
