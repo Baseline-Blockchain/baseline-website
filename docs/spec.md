@@ -68,5 +68,4 @@ Only **P2PKH** (Pay to Public Key Hash) scripts are standard and relayed.
 ## 5. Consensus Rules
 
 1. **Coinbase Maturity**: Mined coins cannot be spent until they have **20 confirmations**.
-2. **Locktime**: Transactions can be locked until a specific block height or timestamp.
-3. **Mempool**: Only standard transactions are accepted.
+2. **Mempool**: Only standard transactions are accepted.

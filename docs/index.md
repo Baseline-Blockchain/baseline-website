@@ -22,9 +22,6 @@ Unlike Bitcoin, where you need million-dollar warehouses of specialized hardware
 ### 2. Built-in Pools
 Running a mining pool usually requires complex custom software. In Baseline, **every node is a pool**. You can spin up a node and let your friends mine to it immediately. Payouts are handled automatically by the protocol.
 
-### 3. Scheduled Payments
-Baseline supports **verifiable future payments**. You can lock funds to be sent at a specific future date. This is built directly into the chain, allowing you to set up trustless deferred transfers.
-
 ## Getting Started
 
 <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
