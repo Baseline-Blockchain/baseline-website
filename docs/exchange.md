@@ -13,7 +13,10 @@ Baseline Cash is designed for easy integration. While it is a **Python implement
 ### 1. Node Setup
 - **Binary**: Run `baseline-node` (Python 3.12+).
 - **Config**: Set a secure `rpc.username`/`rpc.password`.
+- **Wallet**: The built-in wallet is **enabled by default** and is required to generate addresses.
 - **Index**: The `addressindex` is on by default—useful for deposit tracking.
+
+> See the [RPC API](/docs/rpc/) for a complete list of available methods.
 
 ### 2. Deposit Architecture
 Baseline supports standard **P2PKH** addresses (starting with `N`).
