@@ -38,16 +38,3 @@ While mostly compatible, note these differences:
 2. **Block Time**: 20 Seconds (vs 10 mins).
 3. **Units**: 1 BLINE = 100,000,000 Liners (same ratio as BTC/Sats).
 4. **Address Prefix**: Mainnet addresses start with `N` (version `0x35`).
-
-## Docker Example
-
-```yaml
-services:
-  baseline:
-    image: baseline-node
-    volumes:
-      - ./data:/root/.baseline
-    ports:
-      - "8832:8832"  # RPC (Protect this!)
-      - "9333:9333"  # P2P
-```
