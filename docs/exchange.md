@@ -4,37 +4,49 @@ title: Exchange Integration
 permalink: /docs/exchange/
 ---
 
+Baseline Cash integrates like a typical Bitcoin fork. The node exposes a Core-style JSON-RPC API, ships with a built-in wallet, and includes an always-on address index. If you already integrate Bitcoin forks with RPC + walletnotify, you can use the same playbook here.
 
+## Can exchanges integrate the same as a Bitcoin fork?
+Yes. Use the same JSON-RPC wallet methods and `walletnotify` callback flow. Only chain parameters differ (block time, address prefix, unit name).
 
-Baseline Cash is designed for easy integration. While it is a **Python implementation** (not a Bitcoin Core fork), its RPC and transaction model align with Bitcoin Core standards for compatibility.
+## Compatibility Summary
+- **RPC**: HTTP JSON-RPC with `rpc.username` / `rpc.password` auth, Core-style semantics.
+- **Wallet RPC**: `getnewaddress`, `getbalance`, `listunspent`, `listtransactions`, `gettransaction`, `sendtoaddress`, `walletpassphrase`, `walletlock`.
+- **Address Index**: `getaddressutxos`, `getaddresstxids`, `getaddressbalance` (always on).
+- **Notify Hook**: `walletnotify` runs a command on wallet tx events (new tx or confirmation change).
 
-## Integration Checklist
+> See the [RPC API](/docs/rpc/) for the full method list.
 
-### 1. Node Setup
-- **Binary**: Run `baseline-node` (Python 3.12+).
-- **Config**: Set a secure `rpc.username`/`rpc.password`.
-- **Wallet**: The built-in wallet is **enabled by default** and is required to generate addresses.
-- **Index**: The address index is always on (UTXO + history); no external indexer required for deposits.
+## 1. Node Setup
+- Run `baseline-node` (Python 3.12+).
+- Set secure RPC credentials in `config.json`.
+- Optional: configure `walletnotify` for deposit callbacks.
 
-> See the [RPC API](/docs/rpc/) for a complete list of available methods.
+```json
+{
+  "rpc": { "username": "exchange", "password": "strongpass" },
+  "walletnotify": "curl -X POST https://exchange.example/walletnotify?txid=%s"
+}
+```
 
-### 2. Deposit Architecture
-Baseline supports standard **P2PKH** addresses (starting with `N`).
+## 2. Deposit Flow
+Baseline uses standard P2PKH addresses (mainnet prefix `N`).
 
-1. **Generate Address**: `getnewaddress "user_123"`
-2. **Monitor**: Poll `getaddressutxos` / `getaddresstxids` for address-indexed tracking. `listtransactions` only covers wallet-managed addresses.
+1. **Generate address**: `getnewaddress "user_123"`
+2. **Monitor deposits** (pick one):
+   - **Event-driven**: set `walletnotify` and fetch tx details via `gettransaction %s`.
+   - **Polling**: `getaddressutxos` / `getaddresstxids` for address-indexed tracking.
 3. **Confirmations**: 20 confirmations is a conservative policy (coinbase maturity is 20 blocks).
 
-### 3. Withdrawal Architecture
+Note: `walletnotify` fires when a wallet transaction is recorded or its confirmation status changes. Incoming deposits will trigger after they confirm in a block; use the address index if you need mempool-level monitoring or watch-only addresses.
 
-1. **Send**: Use `sendtoaddress <dest> <amount>`.
-2. **Fees**: Automatic fee estimation is usually sufficient.
-3. **Mempool**: Baseline blocks are 20 seconds, so transactions clear quickly.
+## 3. Withdrawal Flow
+1. **Send**: `sendtoaddress <dest> <amount>`
+2. **Track**: `gettransaction <txid>`
+3. **Fees**: default fee estimation is usually sufficient. Optional overrides via `sendtoaddress` options.
 
-## Differences from Bitcoin
-
-While mostly compatible, note these differences:
-1. **Codebase**: Pure Python. Installing `baseline-node` via pip (or running it from source) is the standard way to run a node.
-2. **Block Time**: 20 Seconds (vs 10 mins).
-3. **Units**: 1 BLINE = 100,000,000 Liners (same ratio as BTC/Sats).
-4. **Address Prefix**: Mainnet addresses start with `N` (version `0x35`).
+## Differences vs Bitcoin Core
+1. **Implementation**: Python node (not a Core fork), but RPC semantics align.
+2. **Block Time**: 20 seconds (fast confirmations).
+3. **Units**: 1 BLINE = 100,000,000 Liners.
+4. **Address Prefix**: mainnet addresses start with `N` (version `0x35`).
