@@ -201,7 +201,7 @@
     var ethEl = document.querySelector("[data-fund-eth-amount]");
     var updatedEl = document.querySelector("[data-fund-updated]");
 
-    var SOL_RPCS = ["https://solana.publicnode.com", "https://api.mainnet-beta.solana.com"];
+    var SOL_RPCS = ["https://solana.publicnode.com"];
     var SOL_USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
     var ETH_RPC = "https://cloudflare-eth.com";
     var ETH_USDC = "0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
