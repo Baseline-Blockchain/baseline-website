@@ -10,7 +10,7 @@
     content="Baseline Cash is an open payment network with CPU/GPU mining. Bitcoin ASIC-incompatible — mine BLINE with existing hardware.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="style.css?v=3331234">
+  <link rel="stylesheet" href="style.css?v=3331235">
 </head>
 
 <body data-explorer-url="https://explorer.baseline.cash">
@@ -456,6 +456,135 @@ baseline-miner --gpu --host pool.baseline.cash --port 3333 --address YOUR_ADDRES
         </details>
       </div>
     </section>
+
+    <section id="community-fund" class="section fund-section">
+      <div class="container">
+        <div class="fund-header">
+          <div>
+            <p class="eyebrow">Community funding</p>
+            <h2>Community Liquidity &amp; Access Fund</h2>
+            <p class="muted section-lead">
+              Baseline has no premine and no treasury, so infrastructure that costs money (like exchange integrations)
+              can only happen through community funding.
+            </p>
+          </div>
+          <div class="fund-badges">
+            <span class="badge">Goal: $4,000 USDC</span>
+            <span class="badge"><i class="bi bi-calendar2-check icon" aria-hidden="true"></i>Deadline: 28 Feb</span>
+          </div>
+        </div>
+
+        <div class="fund-grid">
+          <div class="fund-col">
+            <div class="panel reveal fund-progress">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-graph-up-arrow icon" aria-hidden="true"></i>Funding progress</span>
+                <span class="badge">Primary goal</span>
+              </div>
+              <div class="panel-body">
+                <div class="progress-track" data-fund-progress data-fund-target="4000"
+                  data-fund-sol="5hFDNM7KZa9Vmq9tropd2ZWRSBi8QXe9GHuDVqvgmKRN"
+                  data-fund-eth="0xEe466AE40734d6bc60AF453C95c5F3B85fb85eCA" style="--progress: 0;" role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="4000" aria-valuenow="0" aria-valuetext="Progress: $X / $4,000 raised">
+                  <div class="progress-bar" aria-hidden="true"></div>
+                </div>
+                <div class="progress-meta">
+                  <span class="progress-value" data-fund-total>Progress: Loading / $4,000 raised</span>
+                  <span class="muted">Combined USDC on both chains</span>
+                </div>
+                <div class="fund-breakdown">
+                  <div class="fund-breakdown-item">
+                    <span class="k">SOL USDC</span>
+                    <span class="v" data-fund-sol-amount>Loading</span>
+                  </div>
+                  <div class="fund-breakdown-item">
+                    <span class="k">ETH USDC</span>
+                    <span class="v" data-fund-eth-amount>Loading</span>
+                  </div>
+                  <div class="fund-breakdown-item fund-updated muted" data-fund-updated>Updated: --</div>
+                </div>
+                <div class="fund-kv">
+                  <div class="kv">
+                    <div class="k">Goal (primary)</div>
+                    <div class="v">
+                      Raise $4,000 USDC to fund a small-cap exchange listing + integration work so miners and users
+                      have a reliable on/off-ramp.
+                    </div>
+                  </div>
+                  <div class="kv">
+                    <div class="k">Deadline</div>
+                    <div class="v">28 Feb - if reached earlier, work starts immediately.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fund-usage">
+              <div class="card reveal">
+                <h3><i class="bi bi-check2-circle icon" aria-hidden="true"></i>Funds will be used for</h3>
+                <ul class="list">
+                  <li>Listing / integration fee</li>
+                  <li>Wallet &amp; infrastructure work required for integration</li>
+                  <li>Minimal liquidity / operational costs</li>
+                </ul>
+              </div>
+              <div class="card reveal">
+                <h3><i class="bi bi-slash-circle icon" aria-hidden="true"></i>Funds will NOT be used for</h3>
+                <ul class="list">
+                  <li>Team salaries or personal withdrawals</li>
+                  <li>"Pump" marketing</li>
+                  <li>Any promise of ROI or price outcomes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="fund-col">
+            <div class="panel reveal fund-custody">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-shield-lock icon" aria-hidden="true"></i>Custody &amp; transparency</span>
+              </div>
+              <div class="panel-body">
+                <p class="muted">Public donation addresses on SOL and ETH:</p>
+                <div class="address-grid">
+                  <div class="address-card">
+                    <div class="address-label">SOL</div>
+                    <div class="address-value mono">5hFDNM7KZa9Vmq9tropd2ZWRSBi8QXe9GHuDVqvgmKRN</div>
+                  </div>
+                  <div class="address-card">
+                    <div class="address-label">ETH</div>
+                    <div class="address-value mono">0xEe466AE40734d6bc60AF453C95c5F3B85fb85eCA</div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="panel reveal fund-faq">
+              <div class="panel-head">
+                <span class="panel-title"><i class="bi bi-question-circle icon" aria-hidden="true"></i>FAQ (short)</span>
+              </div>
+              <div class="panel-body">
+                <div class="faq-item">
+                  <strong>Do I receive tokens for donating?</strong>
+                  <span class="muted">No. This is a donation to fund network access.</span>
+                </div>
+                <div class="faq-item">
+                  <strong>Is listing guaranteed?</strong>
+                  <span class="muted">
+                    This funds the attempt and required work; if the venue changes requirements, we will refund.
+                  </span>
+                </div>
+                <div class="fund-refund">
+                  If the goal is not reached by the deadline, all donations are refunded to their senders.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -476,7 +605,7 @@ baseline-miner --gpu --host pool.baseline.cash --port 3333 --address YOUR_ADDRES
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=4"></script>
 </body>
 
 </html>
